@@ -9,3 +9,10 @@ php composer.phar create-project laravel/laravel
 
 добавил git из интерфейса в шторм и сделал первый комит
 
+установил laravel-ide-helper
+установил php composer.phar require barryvdh/laravel-debugbar --dev
+
+далее нужно попробовать спарсить с API деканата расписания
+для этого заменить шаблон главной страницы на свой
+
+сделал json_decode и вывел эти данные в консоль из API деканата.
