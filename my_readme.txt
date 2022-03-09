@@ -6,3 +6,5 @@ php composer-setup.php
 php -r "unlink('composer-setup.php');"
 
 php composer.phar create-project laravel/laravel
+
+добавил git из интерфейса в шторм и сделал первый комит
