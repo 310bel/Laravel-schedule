@@ -15,4 +15,15 @@ php composer.phar create-project laravel/laravel
 далее нужно попробовать спарсить с API деканата расписания
 для этого заменить шаблон главной страницы на свой
 
+сделал консольную команду:
+php artisan make:command importJsonplaceholderCommand
+
 сделал json_decode и вывел эти данные в консоль из API деканата.
+с помощью консольной команды:
+php artisan import:jsonplaceholder
+
+Создаем REST-контроллер ресурсный
+php artisan make:controller ScheduleController --resource
+
+Создаем маршрут в web.php
+Route::resource('Sched','ScheduleController')->names('Schedule');
