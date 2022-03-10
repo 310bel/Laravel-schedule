@@ -27,3 +27,5 @@ php artisan make:controller ScheduleController --resource
 
 Создаем маршрут в web.php
 Route::resource('Sched','ScheduleController')->names('Schedule');
+
+Импорт класса alt + Enter
