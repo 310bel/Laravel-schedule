@@ -29,3 +29,16 @@ php artisan make:controller ScheduleController --resource
 Route::resource('Sched','ScheduleController')->names('Schedule');
 
 Импорт класса alt + Enter
+
+Во view добавил :
+@php
+    use App\Components\ImportDataClient;
+    $import = new ImportDataClient();
+    $response = $import->client->request('GET', '');
+    $data = json_decode($response->getBody()->getContents());
+
+    foreach ($data as $item) {
+    dd($item);
+    }
+@endphp
+

@@ -28,16 +28,7 @@
 
 <!-- HEADER -->
 
-@php
-    use App\Components\ImportDataClient;
-    $import = new ImportDataClient();
-    $response = $import->client->request('GET', '');
-    $data = json_decode($response->getBody()->getContents());
 
-    foreach ($data as $item) {
-    dd($item);
-    }
-@endphp
 <div class="container">
     <div class="row align-items-center" style="margin-top: 15px; padding-top: 30px;">
         <div class="col-md-4">
@@ -53,6 +44,18 @@
         </div>
     </div>
 </div>
+
+@php
+    use App\Components\ImportDataClient;
+    $import = new ImportDataClient();
+    $response = $import->client->request('GET', '');
+    $data = json_decode($response->getBody()->getContents());
+
+    foreach ($data as $item) {
+  //  dd($item);
+    }
+@endphp
+
 
 <!-- breadcrumb -->
 
@@ -101,11 +104,10 @@
                 <div class="col-md-12">
                     <select class="form-control" name="facultys" onchange="loadGroups(this)" style="max-width: 434px;">
                         <option>Выберите факультет</option>
-{{--
-                        <? foreach ($facultys as $fid => $facultyName) {
-                            echo '<option value="' . $fid . '">' . $facultyName . '</option>' . "\n";
+
+                        <? foreach ($data as $item) {
+                            echo '<option value="' . $item . '">'  . '</option>' . "\n";
                         } ?>
---}}
                     </select>
                 </div>
             </div>
