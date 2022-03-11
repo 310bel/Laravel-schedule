@@ -42,3 +42,8 @@ Route::resource('Sched','ScheduleController')->names('Schedule');
     }
 @endphp
 
+Вставил в schedule.blade.php код из расписания
+
+Далее требуются знания шаблонизатора blade. также нужно превратить массив в строку и запихнуть в форму расписания.
+добавил app.blade.php начал работать с шаблонизатором
+
