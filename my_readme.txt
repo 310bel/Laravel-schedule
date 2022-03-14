@@ -47,3 +47,43 @@ Route::resource('Sched','ScheduleController')->names('Schedule');
 Далее требуются знания шаблонизатора blade. также нужно превратить массив в строку и запихнуть в форму расписания.
 добавил app.blade.php начал работать с шаблонизатором
 
+В рассписании есть 3 селектора и дата.
+1. Факультет
+2. Форма обучения
+3. Группа
+4. Неделя
+
+API расписания:
+blocks/bsu_api/bsu_schedule/readStudent.php
+
+Что нужно указать во входящих параметрах API Олега:
+$os = optional_param('os', null, PARAM_TEXT);
+$dep = optional_param('dep', null, PARAM_INT);
+$form = optional_param('form', null, PARAM_INT);
+$group = optional_param('group', null, PARAM_TEXT);
+$period = optional_param('period', null, PARAM_INT);
+$date = optional_param('date', null, PARAM_TEXT);
+
+Ответ API:
+
+    "schedule": [
+        {
+            "pairnumber": "1",
+            "id": "12737892",
+            "groups": "12002101",
+            "subgroup": "null",
+            "date": "04.09.2021",
+            "weekday": "Суббота",
+            "timestart": "08:30",
+            "timeend": "10:05",
+            "edworkkind": "лек.",
+            "dis": "Философия",
+            "teacher": "Носков Владимир Алексеевич",
+            "position": "Профессор",
+            "pos": "проф.",
+            "subdepteacher": "11100002. Кафедра философии и теологии",
+            "room": "null",
+            "area": "null",
+            "address": "null",
+            "online": "1"
+        },

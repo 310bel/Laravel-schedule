@@ -8,8 +8,12 @@
         $response = $import->client->request('GET', '');
         $data = json_decode($response->getBody()->getContents());
 
+        $kitchen = array("Spoons"=>"Spoons", "Knifes"=>"Knifes", "Plates"=>"Plates", "Plates2"=>"Spoons");
+
         foreach ($data as $item) {
-      //  dd($item);
+//echo '<pre>';
+print_r($item);
+// dd($item);
         }
     @endphp
 
@@ -60,11 +64,10 @@
                     <select class="form-control" name="facultys" onchange="loadGroups(this)" style="max-width: 434px;">
                         <option>Выберите факультет</option>
 
-                        {{--
-                                                <? foreach ($data as $item) {
-                                                    echo '<option value="' . $item . '">'  . '</option>' . "\n";
+                                                <? foreach ($kitchen as $item) {
+                                                    echo '<option >'.$item.'</option>';
                                                 } ?>
-                        --}}
+
                     </select>
                 </div>
             </div>
