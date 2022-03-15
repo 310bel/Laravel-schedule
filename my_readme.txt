@@ -15,8 +15,26 @@ php composer.phar create-project laravel/laravel
 далее нужно попробовать спарсить с API деканата расписания
 для этого заменить шаблон главной страницы на свой
 
+Испльзуем пакет laravel guzzle. он парсит данные из API и преобразует их в обьект
+С помощью селекторов мы создаем массив данных для отправки запроса.
+Получаем ответ и его(обьект) нужно разложить циклом и вывести на экран.
+
 сделал консольную команду:
 php artisan make:command importJsonplaceholderCommand
+
+json_decode - функция PHP, позволяющая преобразовать JSON строку в переменную PHP, которая по умолчанию будет являться объектом
+
+Синтаксис: json_decode (string, [assoc, depth, options]);
+
+Обязательным является только первый параметр:
+
+string - json строка, которую будем декодировать
+assoc - по умолчанию преобразует все в объект, но если поставить TRUE, то в ассоциативные массивы
+depth - глубину рекурсии
+options - битовая маска опций декодирования
+
+https://blogprogram.ru/dekodiruem-json-dannye-s-pomoshhyu-json_decode-v-php-chast-2/
+
 
 сделал json_decode и вывел эти данные в консоль из API деканата.
 с помощью консольной команды:
@@ -47,11 +65,7 @@ Route::resource('Sched','ScheduleController')->names('Schedule');
 Далее требуются знания шаблонизатора blade. также нужно превратить массив в строку и запихнуть в форму расписания.
 добавил app.blade.php начал работать с шаблонизатором
 
-В рассписании есть 3 селектора и дата.
-1. Факультет
-2. Форма обучения
-3. Группа
-4. Неделя
+Добавил в app.blade.php шапку. остальное в поместил в schedule.blade.php
 
 API расписания:
 blocks/bsu_api/bsu_schedule/readStudent.php
@@ -87,3 +101,20 @@ $date = optional_param('date', null, PARAM_TEXT);
             "address": "null",
             "online": "1"
         },
+
+Логика для расписания
+
+$dep = optional_param('dep', null, PARAM_INT);
+$form = optional_param('form', null, PARAM_INT);
+$group = optional_param('group', null, PARAM_TEXT);
+$period = optional_param('period', null, PARAM_INT);
+$date = optional_param('date', null, PARAM_TEXT);
+
+селекторами выбираем:
+три селектора и дата:
+1. Факультет $dep
+2. Форма обучения $form
+3. Группа $group
+4. Неделя $period
+
+формируем

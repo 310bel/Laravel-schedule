@@ -11,10 +11,19 @@
         $kitchen = array("Spoons"=>"Spoons", "Knifes"=>"Knifes", "Plates"=>"Plates", "Plates2"=>"Spoons");
 
         foreach ($data as $item) {
-//echo '<pre>';
+echo '<pre>';
 print_r($item);
+echo '</pre>';}
+
+/*foreach($data as $brand => $item)
+{
+foreach($item  as  $inner_key => $value)
+{
+echo "[$brand][$inner_key] = $value";
+}
+}*/
 // dd($item);
-        }
+
     @endphp
 
     <!-- breadcrumb -->
