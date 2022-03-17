@@ -65,7 +65,7 @@ Route::resource('Sched','ScheduleController')->names('Schedule');
 Далее требуются знания шаблонизатора blade. также нужно превратить массив в строку и запихнуть в форму расписания.
 добавил app.blade.php начал работать с шаблонизатором
 
-Добавил в app.blade.php шапку. остальное в поместил в schedule.blade.php
+Добавил в app.blade.php шапку. остальное поместил в schedule.blade.php
 
 API расписания:
 blocks/bsu_api/bsu_schedule/readStudent.php
@@ -117,4 +117,4 @@ $date = optional_param('date', null, PARAM_TEXT);
 3. Группа $group
 4. Неделя $period
 
-формируем
+формируем запрос на основе группы

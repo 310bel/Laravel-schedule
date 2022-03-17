@@ -6,7 +6,7 @@
         use App\Components\ImportDataClient;
         $import = new ImportDataClient();
         $response = $import->client->request('GET', '');
-        $data = json_decode($response->getBody()->getContents(),TRUE);
+        $data = json_decode($response->getBody(),TRUE);
 
         $kitchen = array("Spoons"=>"Spoons", "Knifes"=>"Knifes", "Plates"=>"Plates", "Plates2"=>"Spoons");
 
