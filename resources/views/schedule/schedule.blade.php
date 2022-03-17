@@ -6,22 +6,36 @@
         use App\Components\ImportDataClient;
         $import = new ImportDataClient();
         $response = $import->client->request('GET', '');
-        $data = json_decode($response->getBody(),TRUE);
+        $data = json_decode($response->getBody());
 
-        $kitchen = array("Spoons"=>"Spoons", "Knifes"=>"Knifes", "Plates"=>"Plates", "Plates2"=>"Spoons");
+    $depart = array
+                (
+                    "1101" => "Юридический институт",
+                    "110201" => "Факультет физической культуры педагогического института",
+                    "110202" => "Факультет дошкольного, начального и специального образования педагогического института",
+                    "110203" => "Историко-филологический факультет педагогического института",
+                    "110204" => "Факультет математики и естественнонаучного образования педагогического института",
+                    "110205" => "Факультет иностранных языков педагогического института",
+                    "110206" => "Факультет психологии педагогического института",
+                    "1103" => "Медицинский институт",
+                    "110305" => "Медицинский колледж Медицинского института",
+                    "110307" => "Факультет медико-профилактического дела медицинского института",
+                    "1104" => "Институт межкультурной коммуникации и международных отношений",
+                    "1108" => "Институт наук о Земле",
+                    "1109" => "1109",
+                );
 
-        foreach ($data as $item) {
+foreach ($data as $key=> $item){
+
 echo '<pre>';
-print_r($item);
-echo '</pre>';}
+print_r($item[0]->subdepteacher); // вывод свойства у обьекта $item[0] (параметр true у json_decode нету)
+//print_r($item); // вывод
+//print_r($item2['groups']); // вывод элемента из ассоциативного массива вложенного в другой(нужно будет добавить вложеный цикл         foreach ($item as $item2) {}
+echo '</pre>';
+print_r($item[0]->teacher); // вывод свойства у обьекта $item[0] (параметр true у json_decode нету)
 
-/*foreach($data as $brand => $item)
-{
-foreach($item  as  $inner_key => $value)
-{
-echo "[$brand][$inner_key] = $value";
 }
-}*/
+
 // dd($item);
 
     @endphp
@@ -73,8 +87,8 @@ echo "[$brand][$inner_key] = $value";
                     <select class="form-control" name="facultys" onchange="loadGroups(this)" style="max-width: 434px;">
                         <option>Выберите факультет</option>
 
-                                                <? foreach ($kitchen as $item) {
-                                                    echo '<option >'.$item.'</option>';
+                                                <? foreach ($depart as $key=> $item) {
+                                                    echo '<option >'. $key .". ". $item.'</option>';
                                                 } ?>
 
                     </select>
