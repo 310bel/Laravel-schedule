@@ -22,7 +22,15 @@
                     "110307" => "Факультет медико-профилактического дела медицинского института",
                     "1104" => "Институт межкультурной коммуникации и международных отношений",
                     "1108" => "Институт наук о Земле",
-                    "1109" => "1109",
+                    "1109" => "Институт экономики и управления",
+                    "1110" => "Институт общественных наук и массовых коммуникаций",
+                    "1111" => "Институт фармации, химии и биологии",
+                    "1112" => "Институт инженерных и цифровых технологий",
+                    "1180" => "Подготовительный факультет",
+                    "1190" => "Инжиниринговый колледж",
+                    "119206" => "Педагогический факультет Старооскольского филиала",
+                    "119207" => "Факультет экономики и управления Старооскольского филиала",
+                    "119208" => "Факультет СПО"
                 );
 
 foreach ($data as $key=> $item){
@@ -39,6 +47,19 @@ print_r($item[0]->teacher); // вывод свойства у обьекта $it
 // dd($item);
 
     @endphp
+
+{{--
+    <title>Событие onchange</title>
+    <p>Набирите произвольный текст и уберите фокус с элемента:</p>
+    <input type = "text" name = "testInput" id = "testInput" onchange = "testFunction()">
+    <p id = "info2" ></p>
+    <script>
+        function testFunction() {
+            var x = document.getElementById("testInput").value;
+            document.getElementById("info2").innerHTML = "Вы набрали следующий текст: " + x;
+        }
+    </script>
+--}}
 
     <!-- breadcrumb -->
 
@@ -84,12 +105,16 @@ print_r($item[0]->teacher); // вывод свойства у обьекта $it
         -->        <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <select class="form-control" name="facultys" onchange="loadGroups(this)" style="max-width: 434px;">
+                    <select class="form-control" name="facultys" onchange="document.location=this.options[this.selectedIndex].value" style="max-width: 434px;">
                         <option>Выберите факультет</option>
 
                                                 <? foreach ($depart as $key=> $item) {
-                                                    echo '<option >'. $key .". ". $item.'</option>';
-                                                } ?>
+                                                    echo '<option value=' . $key . '>'. $key .". ". $item.'</option>';
+                        //    $aa = $_POST["facultys"];
+                            }
+                        print_r($_POST);
+                                                ?>
+
 
                     </select>
                 </div>
