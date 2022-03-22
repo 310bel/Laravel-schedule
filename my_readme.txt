@@ -117,4 +117,15 @@ $date = optional_param('date', null, PARAM_TEXT);
 3. Группа $group
 4. Неделя $period
 
-формируем запрос на основе группы
+создал массив факультетов из API и подставил его в селектор первый
+
+отрисовку селектора буду делать при помощи Livewire
+
+php composer.phar require livewire/livewire
+
+php artisan config:cache
+
+php artisan make:livewire HelloWorld
+
+
+
