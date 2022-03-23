@@ -127,5 +127,11 @@ php artisan config:cache
 
 php artisan make:livewire HelloWorld
 
+Долго решал проблему ошибки работы пакета. решение:
+У меня была такая же проблема в v1.0.12, снова при развертывании на сервере DigitalOcean (изначально настраивалась через Laravel Forge).
+Я решил это, опубликовав активы:
+php artisan vendor:publish --force --tag=livewire:assets
+Директива лезвия @livewireScripts по-прежнему требуется, но она автоматически правильно извлекает ресурсы из /public/vendor/livewire/livewire.js
+
 
 
