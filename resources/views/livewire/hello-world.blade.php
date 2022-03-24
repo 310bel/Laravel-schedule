@@ -1,9 +1,9 @@
 
 <div>
-   <h2>{{$greeting}}, {{$name}}!</h2>
+   <h2>{{implode(',',$greeting)}}, {{$name}}!</h2>
     <input wire:model="name" type="text">
     <input wire:model="ok" type="checkbox">
-    <select wire:model="greeting">
+    <select wire:model="greeting" multiple>
         <option>Hello</option>
         <option>Goodbye</option>
         <option>Adios</option>
