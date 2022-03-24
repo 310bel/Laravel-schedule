@@ -10,6 +10,7 @@ class Schedule extends Component
     public $ok = false;
     public $departcheck = ['Goodbye'];
     public $departmentname = [];
+    public $iddepartmentname = [];
 
     public function mount()
     {
@@ -21,6 +22,7 @@ foreach ($data as $key=> $item){
 
     for ($i = 0; $i < count($item); $i++) {
         $this->departmentname[] = $item[$i]->departmentname;
+        $this->iddepartmentname[] = $item[$i]->id;
     }}
 
         $this->greeting=['OOOOOOOO'];

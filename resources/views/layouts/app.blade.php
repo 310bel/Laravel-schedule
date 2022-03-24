@@ -43,5 +43,5 @@
 
 
 
-@section('content')
-@show
+@yield('content')
+

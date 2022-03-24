@@ -14,7 +14,7 @@ echo '<pre>';
 for ($i = 0; $i < count($item); $i++) {
 $departmentname[$i] = $item[$i]->departmentname;
 }
-print_r($item[0]->departmentname); // вывод свойства у обьекта $item[0] (параметр true у json_decode нету)
+//print_r($item[0]->departmentname); // вывод свойства у обьекта $item[0] (параметр true у json_decode нету)
 print_r($item); // вывод
 print_r($departmentname);
 
@@ -229,21 +229,6 @@ echo '</pre>';
 
 
         </html>
-
-
-
-
-
-        <p>
-            Выберете группу
-            <select name="formGender">
-                <option value="">Select...</option>
-                <option value="M">Male</option>
-
-                <option value="F">Female</option>
-            </select>
-        </p>
-
 
 
 @endsection
