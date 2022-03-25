@@ -15,7 +15,7 @@ for ($i = 0; $i < count($item); $i++) {
 $departmentname[$i] = $item[$i]->departmentname;
 }
 //print_r($item[0]->departmentname); // вывод свойства у обьекта $item[0] (параметр true у json_decode нету)
-print_r($item); // вывод
+//print_r($item); // вывод
 print_r($departmentname);
 
 //print_r($item2['groups']); // вывод элемента из ассоциативного массива вложенного в другой(нужно будет добавить вложеный цикл         foreach ($item as $item2) {}

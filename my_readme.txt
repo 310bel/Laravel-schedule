@@ -134,6 +134,7 @@ php artisan vendor:publish --force --tag=livewire:assets
 Директива лезвия @livewireScripts по-прежнему требуется, но она автоматически правильно извлекает ресурсы из /public/vendor/livewire/livewire.js
 
 загнал в селектор данные из API. это все с помощью livewire
+далее сделал при выборе в селекторе в переменную передается id департамента
 
 
 

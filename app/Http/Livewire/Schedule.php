@@ -7,34 +7,31 @@ use App\Components\ImportDataClient;
 class Schedule extends Component
 {
     public $name = 'Vlad';
-    public $ok = false;
     public $departcheck = ['Goodbye'];
     public $departmentname = [];
-    public $iddepartmentname = [];
 
     public function mount()
     {
         $import = new ImportDataClient();
-$response = $import->client->request('GET', '');
-$data = json_decode($response->getBody());
+$response_depart = $import->client->request('GET', '');
+$data = json_decode($response_depart->getBody());
 
 foreach ($data as $key=> $item){
 
     for ($i = 0; $i < count($item); $i++) {
-        $this->departmentname[] = $item[$i]->departmentname;
-        $this->iddepartmentname[] = $item[$i]->id;
+        $this->departmentname[$item[$i]->id] = $item[$i]->departmentname;
     }}
 
-        $this->greeting=['OOOOOOOO'];
         $this->name='Max';
     }
-
 
     public function render()
     {
         return view('livewire.schedule');
     }
 }
+
+
 /*$import = new ImportDataClient();
 $response = $import->client->request('GET', '');
 $data = json_decode($response->getBody());
@@ -44,4 +41,7 @@ foreach ($data as $key=> $item){
     echo '<pre>';
     for ($i = 0; $i < count($item); $i++) {
         $departmentname[$i] = $item[$i]->departmentname;
-    }}*/
+    }}
+var_dump($this->departmentname);
+
+*/
