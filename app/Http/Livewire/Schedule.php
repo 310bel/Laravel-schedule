@@ -2,28 +2,46 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
 use App\Components\ImportDataClient;
+use Livewire\Component;
+
 class Schedule extends Component
 {
-    public $name = 'Vlad';
-    public $departcheck = ['Goodbye'];
+    public $departcheck = [];
     public $departmentname = [];
+    public $group = [];
+    public $groupscheck = [];
 
     public function mount()
     {
         $import = new ImportDataClient();
-$response_depart = $import->client->request('GET', '');
-$data = json_decode($response_depart->getBody());
+        $response = $import->client->request('GET', '');
+        $data = json_decode($response->getBody());
 
-foreach ($data as $key=> $item){
+        foreach ($data as $key => $item) {
+            for ($i = 0; $i < count($item); $i++) {
+                $this->departmentname[$item[$i]->id] = $item[$i]->departmentname;
+            }
+        }
 
-    for ($i = 0; $i < count($item); $i++) {
-        $this->departmentname[$item[$i]->id] = $item[$i]->departmentname;
-    }}
-
-        $this->name='Max';
+        $this->name = 'Max';
     }
+
+    public function hydrate()
+    {
+        $import = new ImportDataClient();
+        $response_groups = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2');
+        $data2 = json_decode($response_groups->getBody());
+
+
+        foreach ($data2 as $key => $item) {
+            for ($i = 0; $i < count($item); $i++) {
+                $this->group[$item[$i]->group] = $item[$i]->group;
+            }
+        }
+
+    }
+
 
     public function render()
     {

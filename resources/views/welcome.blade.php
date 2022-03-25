@@ -5,18 +5,28 @@
     @php
         use App\Components\ImportDataClient;
         $import = new ImportDataClient();
-        $response = $import->client->request('GET', '');
-        $data = json_decode($response->getBody());
+$response = $import->client->request('GET', '');
+$response_groups = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2');
+$data = json_decode($response->getBody());
+$data2 = json_decode($response_groups->getBody());
+
+//print_r($data2);
 
 foreach ($data as $key=> $item){
 
 echo '<pre>';
 for ($i = 0; $i < count($item); $i++) {
 $departmentname[$i] = $item[$i]->departmentname;
+}}
+foreach ($data2 as $key=> $item){
+
+for ($i = 0; $i < count($item); $i++) {
+$group[$i] = $item[$i]->group;
 }
 //print_r($item[0]->departmentname); // вывод свойства у обьекта $item[0] (параметр true у json_decode нету)
-//print_r($item); // вывод
+print_r($item); // вывод
 print_r($departmentname);
+print_r($group);
 
 //print_r($item2['groups']); // вывод элемента из ассоциативного массива вложенного в другой(нужно будет добавить вложеный цикл         foreach ($item as $item2) {}
 echo '</pre>';
