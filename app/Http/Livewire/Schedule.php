@@ -9,8 +9,9 @@ class Schedule extends Component
 {
     public $departcheck = [];
     public $departmentname = [];
-    public $group = [];
     public $groupscheck = [];
+    public $group = [];
+    public $test = '11200';
 
     public function mount()
     {
@@ -23,16 +24,15 @@ class Schedule extends Component
                 $this->departmentname[$item[$i]->id] = $item[$i]->departmentname;
             }
         }
-
-        $this->name = 'Max';
     }
 
-    public function hydrate()
+    public function hydrate($groupscheck)
     {
+        //print_r($groupscheck);
+        $test = '19000';
         $import = new ImportDataClient();
-        $response_groups = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2');
+        $response_groups = $import->client->request('GET', 'readStudent.php?os=android&dep='.$test.'&form=2');
         $data2 = json_decode($response_groups->getBody());
-
 
         foreach ($data2 as $key => $item) {
             for ($i = 0; $i < count($item); $i++) {
@@ -41,7 +41,6 @@ class Schedule extends Component
         }
 
     }
-
 
     public function render()
     {

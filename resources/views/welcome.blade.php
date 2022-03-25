@@ -18,15 +18,16 @@ echo '<pre>';
 for ($i = 0; $i < count($item); $i++) {
 $departmentname[$i] = $item[$i]->departmentname;
 }}
+print_r($item); // вывод
 foreach ($data2 as $key=> $item){
 
 for ($i = 0; $i < count($item); $i++) {
 $group[$i] = $item[$i]->group;
 }
 //print_r($item[0]->departmentname); // вывод свойства у обьекта $item[0] (параметр true у json_decode нету)
-print_r($item); // вывод
+//print_r($item); // вывод
 print_r($departmentname);
-print_r($group);
+//print_r($group);
 
 //print_r($item2['groups']); // вывод элемента из ассоциативного массива вложенного в другой(нужно будет добавить вложеный цикл         foreach ($item as $item2) {}
 echo '</pre>';
