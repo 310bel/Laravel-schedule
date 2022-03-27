@@ -10,7 +10,7 @@
 
     </select>
 
-    <select wire:model="groupscheck">
+    <select wire:model="groupscheck"multiple >
 
         <option>Выберите группу</option>
 
@@ -19,12 +19,12 @@
         @endforeach
 
     </select>
-
+    вот  {{implode(',',$groupscheck)}} тут
 <? echo " ".gettype($departcheck)." факультет ";
     print_r($departcheck);
     echo " ".gettype($groupscheck)." группа ";
     print_r($groupscheck);
-    var_dump($_POST);
+    //var_dump($_POST);
 
     ?>
 
