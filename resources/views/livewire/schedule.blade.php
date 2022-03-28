@@ -29,17 +29,17 @@
         @endforeach
 
     </select>
-
-    {{$data3}}
-    это из контроллера группа>   {{$groupscheck}} <
-    это из контроллера факультет>   {{$departcheck}} <
+    <pre>
+    это из контроллера группа>{{$groupscheck}} <
+    это из контроллера форма обуч>{{$formcheck}} <
+    это из контроллера факультет>{{$departcheck}} <
 <? echo " ".gettype($departcheck)." факультет ";
     print_r($departcheck);
     echo " ".gettype($groupscheck)." группа ";
     print_r($groupscheck);
     //var_dump($_POST);
     //вот  {{implode(',',$groupscheck)}} тут
-    print_r($data3);
+    //print_r($data3);
     ?>
 
 </div>

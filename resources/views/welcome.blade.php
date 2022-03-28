@@ -10,30 +10,45 @@ $response_groups = $import->client->request('GET', 'readStudent.php?os=android&d
 $data = json_decode($response->getBody());
 $data2 = json_decode($response_groups->getBody());
 
+        $response_form = $import->client->request('GET', 'readStudent.php?os=android&dep=11200');
+        $data3 = json_decode($response_form->getBody());
+
+                        foreach ($data3 as $key => $item) {
+            for ($i = 0; $i < count($item); $i++) {
+                $this->form[$item[$i]->formname] = $item[$i]->formname;
+            }
+        }
+
+
 //print_r($data2);
 
-foreach ($data as $key=> $item){
+//foreach ($data as $key=> $item){
 
-echo '<pre>';
-for ($i = 0; $i < count($item); $i++) {
-$departmentname[$i] = $item[$i]->departmentname;
-}}
+//echo '<pre>';
+//for ($i = 0; $i < count($item); $i++) {
+//$departmentname[$i] = $item[$i]->departmentname;
+//}}
 //print_r($item); // вывод
-foreach ($data2 as $key=> $item){
+//foreach ($data2 as $key=> $item){
 
-for ($i = 0; $i < count($item); $i++) {
-$group[$i] = $item[$i]->group;
-}
+//for ($i = 0; $i < count($item); $i++) {
+//$group[$i] = $item[$i]->group;
+//}
 //print_r($item[0]->departmentname); // вывод свойства у обьекта $item[0] (параметр true у json_decode нету)
 //print_r($item); // вывод
-print_r($departmentname);
-//print_r($group);
+/*echo '<pre>';
+print_r($data3);
+echo '<pre>';
+print_r($data2);
+echo '<pre>';
+print_r($data);
+*///print_r($group);
 
 //print_r($item2['groups']); // вывод элемента из ассоциативного массива вложенного в другой(нужно будет добавить вложеный цикл         foreach ($item as $item2) {}
-echo '</pre>';
+//echo '</pre>';
 //print_r($item[0]->teacher); // вывод свойства у обьекта $item[0] (параметр true у json_decode нету)
 
-}
+
 
 // dd($item);
 

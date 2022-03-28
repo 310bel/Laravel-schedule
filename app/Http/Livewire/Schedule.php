@@ -33,12 +33,12 @@ class Schedule extends Component
     {
 
         $import = new ImportDataClient();
-        $response_groups = $import->client->request('GET', 'readStudent.php?os=android&dep='.$this->departcheck.'&form=2');
+        $response_groups = $import->client->request('GET', 'readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck);
         $data2 = json_decode($response_groups->getBody());
         $response_form = $import->client->request('GET', 'readStudent.php?os=android&dep='.$this->departcheck);
         $data3 = json_decode($response_form->getBody());
 
-var_dump($_POST);
+//var_dump($_POST);
         foreach ($data2 as $key => $item) {
             for ($i = 0; $i < count($item); $i++) {
                 $this->group[$item[$i]->group] = $item[$i]->group;
@@ -47,7 +47,7 @@ var_dump($_POST);
 
                 foreach ($data3 as $key => $item) {
             for ($i = 0; $i < count($item); $i++) {
-                $this->form[$item[$i]->form] = $item[$i]->form;
+                $this->form[$item[$i]->id] = $item[$i]->formname;
 
             }
         }
