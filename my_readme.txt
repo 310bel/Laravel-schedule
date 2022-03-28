@@ -142,6 +142,7 @@ php artisan vendor:publish --force --tag=livewire:assets
 $this->test2 = serialize($departcheck);
 после вывел в блейде
 departcheck не мог передать потомучто я его обьявил как массив. нужно по умолчанию.
+далее добавить форму обучения
 
 
 
