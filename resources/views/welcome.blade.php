@@ -18,7 +18,7 @@ echo '<pre>';
 for ($i = 0; $i < count($item); $i++) {
 $departmentname[$i] = $item[$i]->departmentname;
 }}
-print_r($item); // вывод
+//print_r($item); // вывод
 foreach ($data2 as $key=> $item){
 
 for ($i = 0; $i < count($item); $i++) {

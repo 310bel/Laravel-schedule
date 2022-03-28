@@ -7,13 +7,14 @@ use Livewire\Component;
 
 class Schedule extends Component
 {
-    public $departcheck = [];
+    public $departcheck ;
     public $departmentname = [];
-    public $groupscheck = [];
+    public $groupscheck;
     public $group = [];
-    public $test ;
+    public $test;
+    public $test2;
 
-    public function mount()
+    public function boot()
     {
         $import = new ImportDataClient();
         $response = $import->client->request('GET', '');
@@ -26,26 +27,30 @@ class Schedule extends Component
         }
     }
 
-/*    public function groupscheck($groupscheck){
+    /*    public function groupscheck($groupscheck){
 
-        $groupscheck = 'rgrgrgrgrgrgrgrgrgrgrgrgrg';
+            $groupscheck = 'rgrgrgrgrgrgrgrgrgrgrgrgrg';
+            }*/
+
+    /*    public function groupscheck($groupscheck){
+            $this->test = $groupscheck;
+    //session(['UserName'=>$this->groupscheck]);
         }*/
 
-
-/*    public function groupscheck($groupscheck){
-        $this->test = $groupscheck;
-//session(['UserName'=>$this->groupscheck]);
-    }*/
-
-    public function hydrate($departcheck)
+    public function updated()
     {
 
-       // $test = $this->groupscheck;
+        // $test = $this->groupscheck;
         //print_r($groupscheck);
-        $test = '11200';
-       // $groupscheck = 'rgrgrgrgrgrgrgrgrgrgrgrgrg';
+        //$test = '11200';
+        //  $this->test2 = serialize($departcheck);
+        // $this->departcheck = serialize($departcheck);
+        //echo (string)$departcheck;
+        $this->test = '11200';
+        //$this->test2 = implode(',',$departcheck);
+
         $import = new ImportDataClient();
-        $response_groups = $import->client->request('GET', 'readStudent.php?os=android&dep='.$departcheck.'&form=2');
+        $response_groups = $import->client->request('GET', 'readStudent.php?os=android&dep='.$this->departcheck.'&form=2');
         $data2 = json_decode($response_groups->getBody());
 
         foreach ($data2 as $key => $item) {
@@ -53,7 +58,6 @@ class Schedule extends Component
                 $this->group[$item[$i]->group] = $item[$i]->group;
             }
         }
-
     }
 
     public function render()
@@ -74,5 +78,7 @@ foreach ($data as $key=> $item){
         $departmentname[$i] = $item[$i]->departmentname;
     }}
 var_dump($this->departmentname);
+changeSetting
+hydrate
 
 */
