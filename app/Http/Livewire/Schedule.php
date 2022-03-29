@@ -14,15 +14,15 @@ class Schedule extends Component
     public $group = [];
     public $form = [];
     public $test;
-    public $data3 = 'ffffff';
+    public $data = 'ffffff';
 
     public function boot()
     {
         $import = new ImportDataClient();
-        $response = $import->client->request('GET', '');
-        $data = json_decode($response->getBody());
+        $response_departmentname = $import->client->request('GET', '');
+        $data0 = json_decode($response_departmentname->getBody());
 
-        foreach ($data as $key => $item) {
+        foreach ($data0 as $key => $item) {
             for ($i = 0; $i < count($item); $i++) {
                 $this->departmentname[$item[$i]->id] = $item[$i]->departmentname;
             }
@@ -37,6 +37,10 @@ class Schedule extends Component
         $data2 = json_decode($response_groups->getBody());
         $response_form = $import->client->request('GET', 'readStudent.php?os=android&dep='.$this->departcheck);
         $data3 = json_decode($response_form->getBody());
+        $response = $import->client->request('GET', 'readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck.'&group=');
+        $data = json_decode($response->getBody());
+
+
 
 //var_dump($_POST);
         foreach ($data2 as $key => $item) {
@@ -45,15 +49,15 @@ class Schedule extends Component
             }
         }
 
-                foreach ($data3 as $key => $item) {
+        foreach ($data3 as $key => $item) {
             for ($i = 0; $i < count($item); $i++) {
                 $this->form[$item[$i]->id] = $item[$i]->formname;
-
             }
         }
     }
 
-    public function render(){
+    public function render()
+    {
         return view('livewire.schedule');
     }
 }

@@ -10,7 +10,7 @@
 
     </select>
 
-    <select wire:model="formcheck" >
+    <select wire:model="formcheck">
 
         <option>Форма обучения</option>
 
@@ -20,7 +20,7 @@
 
     </select>
 
-    <select wire:model="groupscheck" >
+    <select wire:model="groupscheck">
 
         <option>Выберите группу</option>
 
@@ -30,16 +30,20 @@
 
     </select>
     <pre>
-    это из контроллера группа>{{$groupscheck}} <
-    это из контроллера форма обуч>{{$formcheck}} <
-    это из контроллера факультет>{{$departcheck}} <
-<? echo " ".gettype($departcheck)." факультет ";
-    print_r($departcheck);
-    echo " ".gettype($groupscheck)." группа ";
-    print_r($groupscheck);
+Группа>{{$groupscheck}}< Тип переменной {{gettype($groupscheck)}}
+Форма обуч>{{$formcheck}}<
+Факультет>{{$departcheck}}< Тип переменной {{gettype($departcheck)}}
+{{$data}}
+        @foreach($group as $key=> $item)
+<tr>
+<td> {{$key}} {{$item}}</td>
+</tr>
+        @endforeach
+
+    <?
     //var_dump($_POST);
     //вот  {{implode(',',$groupscheck)}} тут
-    //print_r($data3);
+    //print_r($data);
     ?>
 
 </div>
