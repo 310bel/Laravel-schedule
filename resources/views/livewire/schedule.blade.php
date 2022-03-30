@@ -36,25 +36,25 @@
 Факультет>{{$departcheck}}< Тип переменной {{gettype($departcheck)}}
 
 
-
-        @foreach($teacher as $key=> $teachers)
+        @foreach($date as  $dates)
+        @foreach($teacher2 as  $teachers)
 <tr>
-    <td>преподаватель</td>
-<td>{{$key}}{{$item}}</td>
+<td>преподаватель {{$teachers}}</td>
+<td>дата {{$dates}}</td>
 </tr>
         @endforeach
+        @endforeach
 
-        @foreach($date as $key=> $dates)
             <tr>
-    <td>дата</td>
-<td>{{$key}}</td>
+
 </tr>
-    @endforeach
+
 
     <?
     //var_dump($_POST);
     //вот  {{implode(',',$groupscheck)}} тут
-    //print_r($data);
+    print_r($date);
+    print_r($data);
     ?>
 
 </div>

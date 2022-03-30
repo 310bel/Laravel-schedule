@@ -19,9 +19,9 @@ $data2 = json_decode($response_groups->getBody());
             }
         }
 
-echo '<pre>';
+//echo '<pre>';
 print_r($data);
-print_r($data2);
+//print_r($data2);
 
 //foreach ($data as $key=> $item){
 
@@ -115,7 +115,7 @@ print_r($data);
                     <div class="col-md-12">
 
                         @livewire('schedule')
-                        @livewire('visualization')
+
 
 
 

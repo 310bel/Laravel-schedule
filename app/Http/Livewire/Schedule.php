@@ -14,7 +14,7 @@ class Schedule extends Component
     public $formcheck;
     public $group = [];
     public $form = [];
-    public $teacher = [];
+    public $teacher2 = [];
     public $pairnumber = [];
     public $date = [];
     public $timestart = [];
@@ -45,8 +45,8 @@ class Schedule extends Component
 
         foreach ($data as $key => $item) {
             for ($i = 0; $i < count($item); $i++) {
-                $this->teacher[$item[$i]->teacher] = $item[$i]->teacher;
-                $this->date[$item[$i]->date] = $item[$i]->date;
+                $this->teacher2[$i] = $item[$i]->teacher;
+                $this->date[$i] = $item[$i]->date;
             }
         }
     }
