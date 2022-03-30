@@ -125,7 +125,8 @@ php composer.phar require livewire/livewire
 
 php artisan config:cache
 
-php artisan make:livewire HelloWorld
+Создал новый livewire компонент.
+php artisan make:livewire Schedule
 
 Долго решал проблему ошибки работы пакета. решение:
 У меня была такая же проблема в v1.0.12, снова при развертывании на сервере DigitalOcean (изначально настраивалась через Laravel Forge).
@@ -143,6 +144,15 @@ $this->test2 = serialize($departcheck);
 после вывел в блейде
 departcheck не мог передать потомучто я его обьявил как массив. нужно по умолчанию.
 далее добавить форму обучения
+добавил
+
+далее необходимо выводить информацию расписания
+Создал новый livewire компонент visualization потомучто в Schedule guzzle выдает ошибку
+php artisan make:livewire visualization
+нужно проверить подтягиваются ли данные
+
+
+
 
 
 

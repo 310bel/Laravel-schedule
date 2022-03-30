@@ -30,15 +30,26 @@
 
     </select>
     <pre>
+        {{$testhuk}}
 Группа>{{$groupscheck}}< Тип переменной {{gettype($groupscheck)}}
 Форма обуч>{{$formcheck}}<
 Факультет>{{$departcheck}}< Тип переменной {{gettype($departcheck)}}
-{{$data}}
-        @foreach($group as $key=> $item)
+
+
+
+        @foreach($teacher as $key=> $teachers)
 <tr>
-<td> {{$key}} {{$item}}</td>
+    <td>преподаватель</td>
+<td>{{$key}}{{$item}}</td>
 </tr>
         @endforeach
+
+        @foreach($date as $key=> $dates)
+            <tr>
+    <td>дата</td>
+<td>{{$key}}</td>
+</tr>
+    @endforeach
 
     <?
     //var_dump($_POST);

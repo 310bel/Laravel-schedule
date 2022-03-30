@@ -5,7 +5,7 @@
     @php
         use App\Components\ImportDataClient;
         $import = new ImportDataClient();
-$response = $import->client->request('GET', '');
+$response = $import->client->request('GET', 'readStudent.php?os=android&dep=10100&form=2&group=01001705&date=29.03.2022');
 $response_groups = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2');
 $data = json_decode($response->getBody());
 $data2 = json_decode($response_groups->getBody());
@@ -19,8 +19,9 @@ $data2 = json_decode($response_groups->getBody());
             }
         }
 
-
-//print_r($data2);
+echo '<pre>';
+print_r($data);
+print_r($data2);
 
 //foreach ($data as $key=> $item){
 
@@ -114,6 +115,7 @@ print_r($data);
                     <div class="col-md-12">
 
                         @livewire('schedule')
+                        @livewire('visualization')
 
 
 

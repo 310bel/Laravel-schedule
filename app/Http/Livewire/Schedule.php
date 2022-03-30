@@ -8,13 +8,19 @@ use Livewire\Component;
 class Schedule extends Component
 {
     public $departcheck ;
+    public $visualization ;
     public $departmentname = [];
     public $groupscheck;
     public $formcheck;
     public $group = [];
     public $form = [];
-    public $test;
-    public $data = 'ffffff';
+    public $teacher = [];
+    public $pairnumber = [];
+    public $date = [];
+    public $timestart = [];
+    public $timeend = [];
+    public $data;
+    public $testhuk = 'ffffff';
 
     public function boot()
     {
@@ -29,6 +35,22 @@ class Schedule extends Component
         }
     }
 
+    public function updatedGroupscheck()
+    {
+        $import = new ImportDataClient();
+        $response = $import->client->request('GET', 'readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck.'&group='.$this->groupscheck.'&date=29.03.2022');
+        $data = json_decode($response->getBody());
+
+        $this->testhuk = 'функция сработала';
+
+        foreach ($data as $key => $item) {
+            for ($i = 0; $i < count($item); $i++) {
+                $this->teacher[$item[$i]->teacher] = $item[$i]->teacher;
+                $this->date[$item[$i]->date] = $item[$i]->date;
+            }
+        }
+    }
+
     public function updated()
     {
 
@@ -37,9 +59,6 @@ class Schedule extends Component
         $data2 = json_decode($response_groups->getBody());
         $response_form = $import->client->request('GET', 'readStudent.php?os=android&dep='.$this->departcheck);
         $data3 = json_decode($response_form->getBody());
-        $response = $import->client->request('GET', 'readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck.'&group=');
-        $data = json_decode($response->getBody());
-
 
 
 //var_dump($_POST);
@@ -55,6 +74,8 @@ class Schedule extends Component
             }
         }
     }
+
+
 
     public function render()
     {
