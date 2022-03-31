@@ -8,19 +8,17 @@ use Livewire\Component;
 class Schedule extends Component
 {
     public $departcheck ;
-    public $visualization ;
     public $departmentname = [];
     public $groupscheck;
     public $formcheck;
     public $group = [];
     public $form = [];
-    public $teacher2 = [];
-    public $pairnumber = [];
     public $date = [];
     public $timestart = [];
     public $timeend = [];
     public $data;
     public $testhuk = 'ffffff';
+    public $full_schedule = [];
 
     public function boot()
     {
@@ -38,16 +36,22 @@ class Schedule extends Component
     public function updatedGroupscheck()
     {
         $import = new ImportDataClient();
-        $response = $import->client->request('GET', 'readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck.'&group='.$this->groupscheck.'&date=29.03.2022');
+        $response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=12001801&date=29.03.2022&period=5');
         $data = json_decode($response->getBody());
+
+        // readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck.'&group='.$this->groupscheck.'&date=29.03.2022
 
         $this->testhuk = 'функция сработала';
 
-        foreach ($data as $key => $item) {
-            for ($i = 0; $i < count($item); $i++) {
-                $this->teacher2[$i] = $item[$i]->teacher;
-                $this->date[$i] = $item[$i]->date;
-            }
+//        foreach ($data as $key => $item) {
+//            for ($i = 0; $i < count($item); $i++) {
+//                $this->teacher2[$i] = $item[$i]->teacher;
+//                $this->date[$i] = $item[$i]->date;
+//            }
+//        }
+
+        for ($i = 0; $i < count($data->schedule); $i++) {
+            $this->full_schedule[] = (array)$data->schedule[$i];
         }
     }
 

@@ -30,31 +30,33 @@
 
     </select>
     <pre>
+{{--        {{$full_schedule["0"]["weekday"]}}--}}
         {{$testhuk}}
 Группа>{{$groupscheck}}< Тип переменной {{gettype($groupscheck)}}
 Форма обуч>{{$formcheck}}<
 Факультет>{{$departcheck}}< Тип переменной {{gettype($departcheck)}}
 
-
-        @foreach($date as  $dates)
-        @foreach($teacher2 as  $teachers)
-<tr>
-<td>преподаватель {{$teachers}}</td>
-<td>дата {{$dates}}</td>
-</tr>
-        @endforeach
-        @endforeach
-
+<table>
+        @for($i = 0; $i < count($full_schedule); $i++)
             <tr>
-
-</tr>
-
-
-    <?
-    //var_dump($_POST);
-    //вот  {{implode(',',$groupscheck)}} тут
-    print_r($date);
-    print_r($data);
-    ?>
-
+            <td>{{ $full_schedule[$i]['pairnumber'] }} пара<td>
+            <td>{{ $full_schedule[$i]['timestart'] }}-{{ $full_schedule[$i]['timeend'] }}<td>
+            <td>{{ $full_schedule[$i]['dis'] }} пара<td>
+            <td>{{ $full_schedule[$i]['teacher'] }}<td>
+            <td>{{ $full_schedule[$i]['date'] }} {{ $full_schedule[$i]['weekday'] }}<td>
+            <tr>
+        @endfor
+        </table>
+<?php
+    //echo ($this->full_schedule[0]['weekday']);
+       // print_r($full_schedule);
+        ?>
 </div>
+{{--        @foreach($full_schedule as  $sfull)--}}
+{{--            @foreach($sfull as  $full)--}}
+{{--                <tr>--}}
+{{--                <td>преподаватель {{$full['teacher']}}</td>--}}
+{{--                <td>дата {{$full['timestart']}}</td>--}}
+{{--                </tr>--}}
+{{--        @endforeach--}}
+{{--        @endforeach--}}

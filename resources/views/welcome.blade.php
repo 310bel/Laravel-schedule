@@ -5,22 +5,18 @@
     @php
         use App\Components\ImportDataClient;
         $import = new ImportDataClient();
-$response = $import->client->request('GET', 'readStudent.php?os=android&dep=10100&form=2&group=01001705&date=29.03.2022');
-$response_groups = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2');
+$response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=12001801&date=29.03.2022&period=5');
 $data = json_decode($response->getBody());
-$data2 = json_decode($response_groups->getBody());
 
-        $response_form = $import->client->request('GET', 'readStudent.php?os=android&dep=11200');
-        $data3 = json_decode($response_form->getBody());
-
-                        foreach ($data3 as $key => $item) {
-            for ($i = 0; $i < count($item); $i++) {
-                $this->form[$item[$i]->formname] = $item[$i]->formname;
-            }
+        for ($i = 0; $i < count($data->schedule); $i++) {
+            $this->full_schedule[] = (array)$data->schedule[$i];
         }
 
-//echo '<pre>';
+      //  echo ($this->full_schedule[0]['weekday']);
+
+echo '<pre>';
 print_r($data);
+
 //print_r($data2);
 
 //foreach ($data as $key=> $item){
@@ -54,7 +50,7 @@ print_r($data);
 // dd($item);
 
     @endphp
-    @livewireStyles
+
 
     {{--
         <title>Событие onchange</title>
