@@ -19,6 +19,7 @@ class Schedule extends Component
     public $data;
     public $testhuk = 'ffffff';
     public $full_schedule = [];
+    public $groupsearch= 'Введите № группы';
 
     public function boot()
     {
@@ -49,7 +50,7 @@ class Schedule extends Component
 //                $this->date[$i] = $item[$i]->date;
 //            }
 //        }
-
+        $this->full_schedule = []; // очистка массива перед выводом новой инфы
         for ($i = 0; $i < count($data->schedule); $i++) {
             $this->full_schedule[] = (array)$data->schedule[$i];
         }
@@ -79,6 +80,18 @@ class Schedule extends Component
         }
     }
 
+    public function groupsearchclick()
+    {
+        $this->testhuk = $this->groupsearch;
+        $import = new ImportDataClient();
+        $response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=' . $this->groupsearch . '&date=29.03.2022&period=5');
+        $data = json_decode($response->getBody());
+
+        $this->full_schedule = []; // очистка массива перед выводом новой инфы
+        for ($i = 0; $i < count($data->schedule); $i++) {
+            $this->full_schedule[] = (array)$data->schedule[$i];
+        }
+    }
 
 
     public function render()

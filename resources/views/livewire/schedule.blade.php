@@ -29,27 +29,29 @@
         @endforeach
 
     </select>
+    <input wire:model="groupsearch" type="text">
+    <button wire:click="groupsearchclick">Поиск</button>
     <pre>
-{{--        {{$full_schedule["0"]["weekday"]}}--}}
+        {{$groupsearch}}
         {{$testhuk}}
 Группа>{{$groupscheck}}< Тип переменной {{gettype($groupscheck)}}
 Форма обуч>{{$formcheck}}<
 Факультет>{{$departcheck}}< Тип переменной {{gettype($departcheck)}}
-
+</pre>
 <table>
         @for($i = 0; $i < count($full_schedule); $i++)
             <tr>
+            <td>{{ $full_schedule[$i]['date'] }} {{ $full_schedule[$i]['weekday'] }}<td>
             <td>{{ $full_schedule[$i]['pairnumber'] }} пара<td>
             <td>{{ $full_schedule[$i]['timestart'] }}-{{ $full_schedule[$i]['timeend'] }}<td>
-            <td>{{ $full_schedule[$i]['dis'] }} пара<td>
+            <td>{{ $full_schedule[$i]['dis'] }}<td>
             <td>{{ $full_schedule[$i]['teacher'] }}<td>
-            <td>{{ $full_schedule[$i]['date'] }} {{ $full_schedule[$i]['weekday'] }}<td>
             <tr>
         @endfor
         </table>
 <?php
     //echo ($this->full_schedule[0]['weekday']);
-       // print_r($full_schedule);
+      // print_r($full_schedule);
         ?>
 </div>
 {{--        @foreach($full_schedule as  $sfull)--}}

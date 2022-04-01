@@ -15,8 +15,9 @@ $data = json_decode($response->getBody());
       //  echo ($this->full_schedule[0]['weekday']);
 
 echo '<pre>';
-print_r($data);
 
+print_r($data);
+echo '</pre>';
 //print_r($data2);
 
 //foreach ($data as $key=> $item){
