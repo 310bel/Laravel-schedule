@@ -5,7 +5,7 @@
     @php
         use App\Components\ImportDataClient;
         $import = new ImportDataClient();
-$response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=12001801&date=29.03.2022&period=5');
+$response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=12001803&date=04.04.2022&period=5');
 $data = json_decode($response->getBody());
 
         for ($i = 0; $i < count($data->schedule); $i++) {
@@ -16,7 +16,7 @@ $data = json_decode($response->getBody());
 
 echo '<pre>';
 
-print_r($data);
+//print_r($data);
 echo '</pre>';
 //print_r($data2);
 
@@ -68,17 +68,17 @@ print_r($data);
 
     <!-- breadcrumb -->
 
-    <div class="container" style="margin-top: 25px;">
-        <div class="row">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="http://dekanat.bsu.edu.ru/">В начало</a></li>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">Расписание занятий</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
+{{--    <div class="container" style="margin-top: 25px;">--}}
+{{--        <div class="row">--}}
+{{--            <nav aria-label="breadcrumb">--}}
+{{--                <ol class="breadcrumb">--}}
+{{--                    <li class="breadcrumb-item"><a href="http://dekanat.bsu.edu.ru/">В начало</a></li>--}}
+{{--                    </li>--}}
+{{--                    <li class="breadcrumb-item active" aria-current="page">Расписание занятий</li>--}}
+{{--                </ol>--}}
+{{--            </nav>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <!-- -->
 
     <div class="container">
@@ -137,22 +137,22 @@ print_r($data);
             </div>
 
 
-            <div class="container" >
-                <div class="row justify-content-center">
-                    <div class="col-md-5" style="margin-top: 25px;">
-                        <select class="form-control"  id="groupList" name="groups[]" onchange="loadSchedule(this)" style="max-width: 434px;">
-                            <option value="0">Для отображения списка групп выберите факультет</option>
-                        </select>
-                    </div>
+{{--            <div class="container" >--}}
+{{--                <div class="row justify-content-center">--}}
+{{--                    <div class="col-md-5" style="margin-top: 25px;">--}}
+{{--                        <select class="form-control"  id="groupList" name="groups[]" onchange="loadSchedule(this)" style="max-width: 434px;">--}}
+{{--                            <option value="0">Для отображения списка групп выберите факультет</option>--}}
+{{--                        </select>--}}
+{{--                    </div>--}}
 
-                    <div class="offset-md-2" style="margin-top: 25px;"></div>
+{{--                    <div class="offset-md-2" style="margin-top: 25px;"></div>--}}
 
-                    <div class="col-md-2" style="margin-top: 25px;">
-                        <input type="tel" autocorrect="off" pattern="\d [0-9]" class="form-control grpsrch" id="groupsearch" type="text" placeholder="Введите группу" style="height: 30px;">
-                    </div>
+{{--                    <div class="col-md-2" style="margin-top: 25px;">--}}
+{{--                        <input type="tel" autocorrect="off" pattern="\d [0-9]" class="form-control grpsrch" id="groupsearch" type="text" placeholder="Введите группу" style="height: 30px;">--}}
+{{--                    </div>--}}
 
-                    <div class="col-md-3" style="margin-top: 25px;">
-                        <button class="btn btn-outline-info" id="btnsearch" type="button">Поиск</button>
+{{--                    <div class="col-md-3" style="margin-top: 25px;">--}}
+{{--                        <button class="btn btn-outline-info" id="btnsearch" type="button">Поиск</button>--}}
                         <!--                            01001803-->
                         {{--
                                             <script>

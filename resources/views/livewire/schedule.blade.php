@@ -41,10 +41,15 @@
 <table>
         @for($i = 0; $i < count($full_schedule); $i++)
             <tr>
-            <td>{{ $full_schedule[$i]['date'] }} {{ $full_schedule[$i]['weekday'] }}<td>
+
+            <td>{{ $full_schedule[$i]['date'] }} {{ $full_schedule[$i]['weekday'] }}
+                @if ($full_schedule[$i]['online'] === '1')занятия онлайн
+                @elseif ($full_schedule[$i]['online'] === '0')ауд.{{ $full_schedule[$i]['room'] }} {{ $full_schedule[$i]['area'] }}@endif<td>
             <td>{{ $full_schedule[$i]['pairnumber'] }} пара<td>
             <td>{{ $full_schedule[$i]['timestart'] }}-{{ $full_schedule[$i]['timeend'] }}<td>
-            <td>{{ $full_schedule[$i]['dis'] }}<td>
+            <td>{{ $full_schedule[$i]['edworkkind'] }}<td>
+            <td>@if ($full_schedule[$i]['subgroup'] === '1'){{ $full_schedule[$i]['subgroup'] }}подгруппа @endif @if ( $full_schedule[$i]['subgroup'] === '2'){{ $full_schedule[$i]['subgroup'] }}подгруппа @endif{{ $full_schedule[$i]['dis'] }}<td>
+            <td>{{ $full_schedule[$i]['pos'] }}<td>
             <td>{{ $full_schedule[$i]['teacher'] }}<td>
             <tr>
         @endfor

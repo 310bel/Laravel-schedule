@@ -11,8 +11,8 @@
         <link rel="icon" type="image/png" sizes="32x32" href="http://dekanat.bsu.edu.ru/blocks/bsu_schedule/show/favi/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="http://dekanat.bsu.edu.ru/blocks/bsu_schedule/show/favi/favicon-16x16.png">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-        <script src="js_schedule.js"></script>
+{{--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>--}}
+{{--        <script src="js_schedule.js"></script>--}}
         <!-- CSS only -->
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"

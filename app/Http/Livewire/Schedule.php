@@ -37,7 +37,7 @@ class Schedule extends Component
     public function updatedGroupscheck()
     {
         $import = new ImportDataClient();
-        $response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=12001801&date=29.03.2022&period=5');
+        $response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=12001803&date=04.04.2022&period=5');
         $data = json_decode($response->getBody());
 
         // readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck.'&group='.$this->groupscheck.'&date=29.03.2022
@@ -84,7 +84,7 @@ class Schedule extends Component
     {
         $this->testhuk = $this->groupsearch;
         $import = new ImportDataClient();
-        $response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=' . $this->groupsearch . '&date=29.03.2022&period=5');
+        $response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=' . $this->groupsearch . '&date=04.04.2022&period=5');
         $data = json_decode($response->getBody());
 
         $this->full_schedule = []; // очистка массива перед выводом новой инфы
