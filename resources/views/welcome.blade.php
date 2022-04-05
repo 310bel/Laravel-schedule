@@ -82,14 +82,14 @@ print_r($data);
     <!-- -->
 
     <div class="container">
-        <div class="row justify-content-center">
-            <nav role='navigation' class="transformer-tabs">
+        <div class="card-header">
+{{--            <nav role='navigation' class="transformer-tabs">--}}
                 <ul class="nav nav-tabs" id="myTab" style="margin-bottom: 20px;">
                     <li class="nav-item active">
                         <a class="nav-link active" href="#home" data-toggle="tab">Расписание занятий студентов</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#profile" data-toggle="tab">Расписание преподавателей</a>
+                        <a class="nav-link" href="Sched" data-toggle="tab">Расписание преподавателей</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#messages" data-toggle="tab">Расписание занятий в аудиториях</a>
@@ -242,8 +242,7 @@ print_r($data);
 
         </body>
 
-        <footer class="row">
-            <div class="container" style="margin-top: 20px;">
+        <footer class="container">
             <span class="transformer-tabs">
                 <a href="http://www.bsu.edu.ru/bsu/structure/detail.php?ID=2263">Ресурс департамента образовательной политики</a>
                 <br>Разработка и техническая поддержка: E-mail:

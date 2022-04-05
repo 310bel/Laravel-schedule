@@ -1,6 +1,9 @@
 <div>
+<div class="container">
+    <div class="row">
+        <div class="col">
 
-    <select wire:model="departcheck">
+    <select wire:model="departcheck" class="form-select form-select-sm min-width" aria-label=".form-select-sm example"style="margin-bottom: 5px;width: auto;">
 
         <option>Выберите факультет</option>
 
@@ -9,8 +12,10 @@
         @endforeach
 
     </select>
+    </div>
+    <div class="col">
 
-    <select wire:model="formcheck">
+    <select wire:model="formcheck" class="form-select form-select-sm min-width" aria-label=".form-select-sm example"style="margin-bottom: 5px;width: auto;">
 
         <option>Форма обучения</option>
 
@@ -19,8 +24,10 @@
         @endforeach
 
     </select>
+    </div>
+    <div class="col">
 
-    <select wire:model="groupscheck">
+    <select wire:model="groupscheck"class="form-select form-select-sm" aria-label=".form-select-sm example"style="margin-bottom: 5px;width: auto;">
 
         <option>Выберите группу</option>
 
@@ -29,8 +36,12 @@
         @endforeach
 
     </select>
-    <input wire:model="groupsearch" type="text">
-    <button wire:click="groupsearchclick">Поиск</button>
+    </div>
+</div>
+</div>
+
+    <input wire:model="groupsearch" class="form-control form-control-sm" type="text" placeholder="Введите № группы" aria-label=".form-control-sm example "style="margin-bottom: 5px;width: auto">
+    <button wire:click="groupsearchclick"class="btn btn-outline-secondary btn-sm">Поиск</button>
     <pre>
         {{$groupsearch}}
         {{$testhuk}}
@@ -38,27 +49,30 @@
 Форма обуч>{{$formcheck}}<
 Факультет>{{$departcheck}}< Тип переменной {{gettype($departcheck)}}
 </pre>
-<table>
+    <table class="table table-bordered table-striped">
         @for($i = 0; $i < count($full_schedule); $i++)
             <tr>
-
-            <td>{{ $full_schedule[$i]['date'] }} {{ $full_schedule[$i]['weekday'] }}
-                @if ($full_schedule[$i]['online'] === '1')занятия онлайн
-                @elseif ($full_schedule[$i]['online'] === '0')ауд.{{ $full_schedule[$i]['room'] }} {{ $full_schedule[$i]['area'] }}@endif<td>
-            <td>{{ $full_schedule[$i]['pairnumber'] }} пара<td>
-            <td>{{ $full_schedule[$i]['timestart'] }}-{{ $full_schedule[$i]['timeend'] }}<td>
-            <td>{{ $full_schedule[$i]['edworkkind'] }}<td>
-            <td>@if ($full_schedule[$i]['subgroup'] === '1'){{ $full_schedule[$i]['subgroup'] }}подгруппа @endif @if ( $full_schedule[$i]['subgroup'] === '2'){{ $full_schedule[$i]['subgroup'] }}подгруппа @endif{{ $full_schedule[$i]['dis'] }}<td>
-            <td>{{ $full_schedule[$i]['pos'] }}<td>
-            <td>{{ $full_schedule[$i]['teacher'] }}<td>
-            <tr>
+                <td>{{ $full_schedule[$i]['date'] }} {{ $full_schedule[$i]['weekday'] }}
+                    @if ($full_schedule[$i]['online'] === '1')занятия онлайн
+                    @elseif ($full_schedule[$i]['online'] === '0')
+                        ауд.{{ $full_schedule[$i]['room'] }} {{ $full_schedule[$i]['area'] }}@endif
+                <td>{{ $full_schedule[$i]['pairnumber'] }} пара
+                <td>{{ $full_schedule[$i]['timestart'] }}-{{ $full_schedule[$i]['timeend'] }}
+                <td>{{ $full_schedule[$i]['edworkkind'] }}
+                <td>@if ($full_schedule[$i]['subgroup'] === '1'){{ $full_schedule[$i]['subgroup'] }}
+                    подгруппа @endif @if ( $full_schedule[$i]['subgroup'] === '2'){{ $full_schedule[$i]['subgroup'] }}
+                    подгруппа @endif{{ $full_schedule[$i]['dis'] }}
+                <td>{{ $full_schedule[$i]['pos'] }}
+                <td>{{ $full_schedule[$i]['teacher'] }}
         @endfor
-        </table>
+        <tr>
+    </table>
+</div>
 <?php
     //echo ($this->full_schedule[0]['weekday']);
       // print_r($full_schedule);
         ?>
-</div>
+
 {{--        @foreach($full_schedule as  $sfull)--}}
 {{--            @foreach($sfull as  $full)--}}
 {{--                <tr>--}}

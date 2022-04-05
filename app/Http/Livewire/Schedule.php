@@ -19,7 +19,7 @@ class Schedule extends Component
     public $data;
     public $testhuk = 'ffffff';
     public $full_schedule = [];
-    public $groupsearch= 'Введите № группы';
+    public $groupsearch;
 
     public function boot()
     {
