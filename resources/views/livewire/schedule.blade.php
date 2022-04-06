@@ -1,47 +1,61 @@
 <div>
-<div class="container" >
-    <div class="row">
-        <div class="col">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-auto">
 
-    <select wire:model="departcheck" class="form-select form-select-sm min-width" aria-label=".form-select-sm example"style="margin-bottom: 5px;width: auto;">
+                <select wire:model="departcheck" class="form-select form-select-sm min-width"
+                        aria-label=".form-select-sm example" style="margin-bottom: 5px;width: auto">
 
-        <option>Выберите факультет</option>
+                    <option>Выберите факультет</option>
 
-        @foreach ($departmentname as $key=> $item)
-            <option value={{$key}}>{{$item}}</option>
-        @endforeach
+                    @foreach ($departmentname as $key=> $item)
+                        <option value={{$key}}>{{$item}}</option>
+                    @endforeach
 
-    </select>
+                </select>
+            </div>
+            <div class="col-md-auto">
+
+                <select wire:model="formcheck" class="form-select form-select-sm min-width"
+                        aria-label=".form-select-sm example" style="margin-bottom: 5px;width: auto;">
+
+                    <option>Форма обучения</option>
+
+                    @foreach ($form as $key=> $item)
+                        <option value={{$key}}>{{$item}}</option>
+                    @endforeach
+
+                </select>
+            </div>
+            <div class="col-md-auto">
+
+                <select wire:model="groupscheck" class="form-select form-select-sm" aria-label=".form-select-sm example"
+                        style="margin-bottom: 5px;width: auto;">
+
+                    <option>Выберите группу</option>
+
+                    @foreach ($group as $key=> $item)
+                        <option value={{$key}}>{{$item}}</option>
+                    @endforeach
+
+                </select>
+            </div>
+        </div>
     </div>
-    <div class="col">
 
-    <select wire:model="formcheck" class="form-select form-select-sm min-width" aria-label=".form-select-sm example"style="margin-bottom: 5px;width: auto;">
-
-        <option>Форма обучения</option>
-
-        @foreach ($form as $key=> $item)
-            <option value={{$key}}>{{$item}}</option>
-        @endforeach
-
-    </select>
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <input wire:model="groupsearch" class="form-control form-control-sm" type="text"
+                       placeholder="Введите № группы" aria-label=".form-control-sm example "
+                       style="margin-bottom: 5px;width: 200px">
+            </div>
+            <div class="col">
+                <button wire:click="groupsearchclick" class="btn btn-outline-secondary btn-sm">Поиск</button>
+            </div>
+        </div>
     </div>
-    <div class="col">
 
-    <select wire:model="groupscheck"class="form-select form-select-sm" aria-label=".form-select-sm example"style="margin-bottom: 5px;width: auto;">
-
-        <option>Выберите группу</option>
-
-        @foreach ($group as $key=> $item)
-            <option value={{$key}}>{{$item}}</option>
-        @endforeach
-
-    </select>
-    </div>
-</div>
-</div>
-
-    <input wire:model="groupsearch" class="form-control form-control-sm" type="text" placeholder="Введите № группы" aria-label=".form-control-sm example "style="margin-bottom: 5px;width: auto">
-    <button wire:click="groupsearchclick"class="btn btn-outline-secondary btn-sm">Поиск</button>
     <pre>
         {{$groupsearch}}
         {{$testhuk}}

@@ -83,7 +83,7 @@ print_r($data);
 
     <div class="container">
         <div class="card-header">
-{{--            <nav role='navigation' class="transformer-tabs">--}}
+            <nav role='navigation' class="transformer-tabs">
                 <ul class="nav nav-tabs" id="myTab" style="margin-bottom: 20px;">
                     <li class="nav-item active">
                         <a class="nav-link active" href="#home" data-toggle="tab">Расписание занятий студентов</a>
@@ -95,46 +95,25 @@ print_r($data);
                         <a class="nav-link" href="#messages" data-toggle="tab">Расписание занятий в аудиториях</a>
                     </li>
                 </ul>
-            </nav>
+           </nav>
+            @livewire('schedule')
         </div>
+
     </div>
 
-    <div id='content' class="tab-content">
+{{--    <div id='content' class="tab-content">--}}
         <!----------------------------------------------------------------------------------------------------------------->
         <!-- РАСПИСАНИЕ СТУДЕНТОВ   --------------------------------------------------------------------------------------->
         <!----------------------------------------------------------------------------------------------------------------->
 
 
-        <div class="tab-pane fade show in active" id="home">
-            <!--        <center><font size="5" color="green"> Уважаемые студенты! Расписание находится в стадии формирования.</font></center><br>
-            -->        <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-
-                        @livewire('schedule')
-
-
-
-
-
-                        {{--
-                                                <select class="form-control" name="facultys" onchange="document.location=this.options[this.selectedIndex].value" style="max-width: 434px;">
-                                                    <option>Выберите факультет</option>
-
-                                                    <? foreach ($departmentname as $key=> $item) {
-                                                        echo '<option value=' . $key . '>'.$item.'</option>';
-                                                        //    echo '<option value=' . $key . '>'. $key ." ". $item.'</option>';
-                                                        //    $aa = $_POST["facultys"];
-                                                    }
-                                                    //print_r($_POST);
-                                                    ?>
-
-
-                                                </select>
-                        --}}
-                    </div>
-                </div>
-            </div>
+{{--        <div class="tab-pane fade show in active" id="home">--}}
+{{--                    <div class="container">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-md-12">--}}
+{{--                    </div>--}}
+{{--                </div> --}}
+{{--            </div>--}}
 
 
 {{--            <div class="container" >--}}
