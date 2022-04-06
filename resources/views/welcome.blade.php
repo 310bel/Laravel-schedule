@@ -53,34 +53,6 @@ print_r($data);
     @endphp
 
 
-    {{--
-        <title>Событие onchange</title>
-        <p>Набирите произвольный текст и уберите фокус с элемента:</p>
-        <input type = "text" name = "testInput" id = "testInput" onchange = "testFunction()">
-        <p id = "info2" ></p>
-        <script>
-            function testFunction() {
-                var x = document.getElementById("testInput").value;
-                document.getElementById("info2").innerHTML = "Вы набрали следующий текст: " + x;
-            }
-        </script>
-    --}}
-
-    <!-- breadcrumb -->
-
-{{--    <div class="container" style="margin-top: 25px;">--}}
-{{--        <div class="row">--}}
-{{--            <nav aria-label="breadcrumb">--}}
-{{--                <ol class="breadcrumb">--}}
-{{--                    <li class="breadcrumb-item"><a href="http://dekanat.bsu.edu.ru/">В начало</a></li>--}}
-{{--                    </li>--}}
-{{--                    <li class="breadcrumb-item active" aria-current="page">Расписание занятий</li>--}}
-{{--                </ol>--}}
-{{--            </nav>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-    <!-- -->
-
     <div class="container">
         <div class="card-header">
             <nav role='navigation' class="transformer-tabs">
@@ -98,55 +70,8 @@ print_r($data);
            </nav>
             @livewire('schedule')
         </div>
-
     </div>
 
-{{--    <div id='content' class="tab-content">--}}
-        <!----------------------------------------------------------------------------------------------------------------->
-        <!-- РАСПИСАНИЕ СТУДЕНТОВ   --------------------------------------------------------------------------------------->
-        <!----------------------------------------------------------------------------------------------------------------->
-
-
-{{--        <div class="tab-pane fade show in active" id="home">--}}
-{{--                    <div class="container">--}}
-{{--                <div class="row">--}}
-{{--                    <div class="col-md-12">--}}
-{{--                    </div>--}}
-{{--                </div> --}}
-{{--            </div>--}}
-
-
-{{--            <div class="container" >--}}
-{{--                <div class="row justify-content-center">--}}
-{{--                    <div class="col-md-5" style="margin-top: 25px;">--}}
-{{--                        <select class="form-control"  id="groupList" name="groups[]" onchange="loadSchedule(this)" style="max-width: 434px;">--}}
-{{--                            <option value="0">Для отображения списка групп выберите факультет</option>--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-
-{{--                    <div class="offset-md-2" style="margin-top: 25px;"></div>--}}
-
-{{--                    <div class="col-md-2" style="margin-top: 25px;">--}}
-{{--                        <input type="tel" autocorrect="off" pattern="\d [0-9]" class="form-control grpsrch" id="groupsearch" type="text" placeholder="Введите группу" style="height: 30px;">--}}
-{{--                    </div>--}}
-
-{{--                    <div class="col-md-3" style="margin-top: 25px;">--}}
-{{--                        <button class="btn btn-outline-info" id="btnsearch" type="button">Поиск</button>--}}
-                        <!--                            01001803-->
-                        {{--
-                                            <script>
-                                                function someFunc2() {
-                                                    var newtime = <?echo $newTime?>;
-                                                    if (document.getElementById("groupsearch").value == '')
-                                                        return false;
-                                                    else loadSchedule2(document.getElementById("groupsearch").value, newtime);
-                                                }
-                                                document.getElementById("btnsearch").onclick = someFunc2;
-                                            </script>
-                        --}}
-                    </div>
-                </div>
-            </div>
 
             <div class="container" style="margin-top: 25px;">
                 <div class="row ">
@@ -189,23 +114,6 @@ print_r($data);
                                 </ul>
                             </nav>
                         </div>
-                        <!--
-                        <div class="d-none d-md-block">
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination justify-content-center">
-                                    <li id="week" data-val="prevWeek" class="page-item"><a class="page-link" href="#"><i
-                                                    class="fas fa-arrow-circle-left"></i> Предыдущая неделя</a></li>
-                                    <li id="week" data-val="thisWeek" class="page-item"><a class="page-link" href="#">Текущая
-                                            неделя</a></li>
-                                    <li id="week" data-val="nextWeek" class="page-item"><a class="page-link" href="#">Следующая
-                                            неделя <i class="fas fa-arrow-circle-right"></i></a></li>
-                                </ul>
-                            </nav>
-                        </div>-->
-
-                    </div>
-                </div>
-            </div>
 
             <div class="container">
                 <div class="row">
