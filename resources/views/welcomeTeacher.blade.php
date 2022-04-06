@@ -57,18 +57,18 @@ print_r($data);
         <div class="card-header">
             <nav role='navigation' class="transformer-tabs">
                 <ul class="nav nav-tabs" id="myTab" style="margin-bottom: 20px;">
-                    <li class="nav-item active">
-                        <a class="nav-link active" href="/" data-toggle="tab">Расписание занятий студентов</a>
+                    <li class="nav-item ">
+                        <a class="nav-link " href="\" data-toggle="tab">Расписание занятий студентов</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Teacher" data-toggle="tab">Расписание преподавателей</a>
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="Teacher" data-toggle="tab">Расписание преподавателей</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#messages" data-toggle="tab">Расписание занятий в аудиториях</a>
                     </li>
                 </ul>
            </nav>
-            @livewire('schedule')
+            @livewire('teacher')
         </div>
     </div>
 

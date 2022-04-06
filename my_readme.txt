@@ -166,6 +166,9 @@ php artisan make:livewire visualization
 
 добавляю <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css"/>
 
+создам новый компонент для Расписание преподавателей
+php artisan make:livewire Teacher
+
 
 
 

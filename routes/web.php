@@ -17,5 +17,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('Sched','ScheduleController')->names('Schedule');
+Route::resource('Teacher','ScheduleController')->names('Teacher');
 
