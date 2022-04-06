@@ -15,12 +15,12 @@
             </div>
 
             <div class="col-md-auto">
-                <select wire:model="formcheck" class="form-select form-select-sm min-width"
+                <select wire:model="subdepcheck" class="form-select form-select-sm min-width"
                         aria-label=".form-select-sm example" style="margin-bottom: 5px;width: auto;">
 
-                    <option>Форма обучения</option>
+                    <option>Кафедра</option>
 
-                    @foreach ($form as $key=> $item)
+                    @foreach ($subdep as $key=> $item)
                         <option value={{$key}}>{{$item}}</option>
                     @endforeach
 
@@ -28,12 +28,12 @@
             </div>
 
             <div class="col-md-auto">
-                <select wire:model="groupscheck" class="form-select form-select-sm" aria-label=".form-select-sm example"
+                <select wire:model="teachidcheck" class="form-select form-select-sm" aria-label=".form-select-sm example"
                         style="margin-bottom: 5px;width: auto;">
 
-                    <option>Выберите группу</option>
+                    <option>Преподаватель</option>
 
-                    @foreach ($group as $key=> $item)
+                    @foreach ($teachid as $key=> $item)
                         <option value={{$key}}>{{$item}}</option>
                     @endforeach
 
@@ -56,11 +56,7 @@
     </div>
 
     <pre>
-        {{$groupsearch}}
         {{$testhuk}}
-Группа>{{$groupscheck}}< Тип переменной {{gettype($groupscheck)}}
-Форма обуч>{{$formcheck}}<
-Факультет>{{$departcheck}}< Тип переменной {{gettype($departcheck)}}
 </pre>
     <table class="table table-bordered table-striped">
         @for($i = 0; $i < count($full_schedule); $i++)

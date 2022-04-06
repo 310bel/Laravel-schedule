@@ -9,10 +9,10 @@ class Teacher extends Component
 {
     public $departcheck ;
     public $departmentname = [];
-    public $groupscheck;
+    public $subdepcheck;
     public $formcheck;
-    public $group = [];
-    public $form = [];
+    public $teachid = [];
+    public $subdep = [];
     public $date = [];
     public $timestart = [];
     public $timeend = [];
@@ -37,7 +37,7 @@ class Teacher extends Component
     public function updatedGroupscheck()
     {
         $import = new ImportDataClient();
-        $response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=12001803&date=04.04.2022&period=5');
+        $response = $import->client->request('GET', 'readTeacher.php?dep='.$this->departcheck);
         $data = json_decode($response->getBody());
 
         // readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck.'&group='.$this->groupscheck.'&date=29.03.2022
@@ -60,39 +60,25 @@ class Teacher extends Component
     {
 
         $import = new ImportDataClient();
-        $response_groups = $import->client->request('GET', 'readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck);
-        $data2 = json_decode($response_groups->getBody());
-        $response_form = $import->client->request('GET', 'readStudent.php?os=android&dep='.$this->departcheck);
-        $data3 = json_decode($response_form->getBody());
+        $response_teacher = $import->client->request('GET', 'readTeacher.php?dep='.$this->departcheck.'&subdep='.$this->subdepcheck);
+        $data2 = json_decode($response_teacher->getBody());
+        $response_subdep = $import->client->request('GET', 'readTeacher.php?dep=11200');
+        $data3 = json_decode($response_subdep->getBody());
 
 
 //var_dump($_POST);
+//        foreach ($data3 as $key => $item) {
+//            for ($i = 0; $i < count($item); $i++) {
+//                $this->subdep[$item[$i]->id] = $item[$i]->name;
+//            }
+//        }
+
         foreach ($data2 as $key => $item) {
             for ($i = 0; $i < count($item); $i++) {
-                $this->group[$item[$i]->group] = $item[$i]->group;
-            }
-        }
-
-        foreach ($data3 as $key => $item) {
-            for ($i = 0; $i < count($item); $i++) {
-                $this->form[$item[$i]->id] = $item[$i]->formname;
+                $this->teachid[$item[$i]->id] = $item[$i]->teachid;
             }
         }
     }
-
-    public function groupsearchclick()
-    {
-        $this->testhuk = $this->groupsearch;
-        $import = new ImportDataClient();
-        $response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=' . $this->groupsearch . '&date=04.04.2022&period=5');
-        $data = json_decode($response->getBody());
-
-        $this->full_schedule = []; // очистка массива перед выводом новой инфы
-        for ($i = 0; $i < count($data->schedule); $i++) {
-            $this->full_schedule[] = (array)$data->schedule[$i];
-        }
-    }
-
 
     public function render()
     {
