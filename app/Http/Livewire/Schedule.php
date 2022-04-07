@@ -17,7 +17,7 @@ class Schedule extends Component
     public $timestart = [];
     public $timeend = [];
     public $data;
-    public $testhuk = 'ffffff';
+    public $testhuk = 'не выбрано';
     public $full_schedule = [];
     public $groupsearch;
 

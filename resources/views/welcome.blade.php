@@ -5,14 +5,15 @@
     @php
         use App\Components\ImportDataClient;
         $import = new ImportDataClient();
-$response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=12001803&date=04.04.2022&period=5');
+$response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=12002101&date=29.03.2022&period=180');
 $data = json_decode($response->getBody());
 
-        for ($i = 0; $i < count($data->schedule); $i++) {
-            $this->full_schedule[] = (array)$data->schedule[$i];
-        }
+        //for ($i = 0; $i < count($data->schedule); $i++) {
+      //      $this->full_schedule[] = (array)$data->schedule[$i];
+      //  }
 
       //  echo ($this->full_schedule[0]['weekday']);
+
 
 echo '<pre>';
 
