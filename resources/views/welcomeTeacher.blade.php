@@ -5,25 +5,28 @@
     @php
         use App\Components\ImportDataClient;
         $import = new ImportDataClient();
-$response = $import->client->request('GET', 'readTeacher.php?dep=11200');
-$data = json_decode($response->getBody(),true);
+//$response = $import->client->request('GET', 'readTeacher.php?dep=11200');
+//$data = json_decode($response->getBody(),true);
 
-        $response_teacher = $import->client->request('GET', 'readTeacher.php?dep=11200&subdep=1631');
-        $data3 = json_decode($response_teacher->getBody());
+                $response = $import->client->request('GET', 'readTeacher.php?dep=11200&subdep=1631&teachid=4&date=07.04.2022&period=180');
+        $full_teachid = json_decode($response->getBody(),true);
 
+$full_teachid = array_values( $full_teachid);
+
+   //     if(isset($this->full_teachid['0'])){
+    //        $check = $this->full_teachid['0'];}else{
+     //       $this->full_teachid = $full_teachid  ;
+   //     }
 
       //  for ($i = 0; $i < count($data->schedule); $i++) {
       //      $this->full_schedule[] = (array)$data->schedule[$i];
       //  }
 
       //  echo ($this->full_schedule[0]['weekday']);
-$this->data = array_values( $data);
-        foreach ($this->data as $key => $item) {
-            $subdep[$item['id']] = $item['name'];
-        }
+
 echo '<pre>';
 
-//print_r($subdep);
+//print_r($full_teachid);
 echo '</pre>';
 //print_r($data2);
 

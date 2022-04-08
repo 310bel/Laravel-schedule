@@ -13,13 +13,14 @@ class Teacher extends Component
     public $teachidcheck;
     public $teachid = [];
     public $subdep = [];
-    public $date = [];
-    public $timestart = [];
-    public $timeend = [];
-    public $data;
-    public $testhuk = 'не выбрано';
-    public $full_teachid = [];
+    public $check;
+    public $testhuk = '';
     public $groupsearch;
+    public $full_teachid = [];
+    public $full_teachidcheck = [];
+  //  protected $rules = [
+  //      'full_teachid' =>'array'
+  //  ];
 
     public function boot()
     {
@@ -36,26 +37,27 @@ class Teacher extends Component
 
     public function updatedTeachidcheck()
     {
+        $this->check = ''; // очистка cообщения Нет занятий
+        $this->full_teachidcheck = []; // очистка массива перед выводом новой инфы
+        $this->full_teachid = []; // очистка массива перед выводом новой инфы
         $import = new ImportDataClient();
         $response = $import->client->request('GET', 'readTeacher.php?dep='.$this->departcheck.'&subdep='.$this->subdepcheck.'&teachid='.$this->teachidcheck.'&date=07.04.2022&period=180');
         $this->full_teachid = json_decode($response->getBody(),true);
 
+       // $validatedData = $this->validate();
+
         $this->full_teachid = array_values( $this->full_teachid);
+
+        if($this->full_teachid['0'] === 'Нет занятий'){
+            $this->check = $this->full_teachid['0'];}else{
+            $this->full_teachidcheck = $this->full_teachid  ;
+            $this->full_teachidcheck = array_values( $this->full_teachidcheck);
+        }
 
         // readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck.'&group='.$this->groupscheck.'&date=29.03.2022
 
         $this->testhuk = 'функция сработала';
 
-//        foreach ($data as $key => $item) {
-//            for ($i = 0; $i < count($item); $i++) {
-//                $this->teacher2[$i] = $item[$i]->teacher;
-//                $this->date[$i] = $item[$i]->date;
-//            }
-//        }
-//        $this->full_schedule = []; // очистка массива перед выводом новой инфы
-//        for ($i = 0; $i < count($data->schedule); $i++) {
-//            $this->full_schedule[] = (array)$data->schedule[$i];
-//        }
     }
 
     public function updated()
