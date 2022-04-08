@@ -50,9 +50,7 @@ class Teacher extends Component
 
         if($this->full_teachid['0'] === 'Нет занятий'){
             $this->check = $this->full_teachid['0'];}else{
-            $this->full_teachidcheck = $this->full_teachid  ;
-            $this->full_teachidcheck = array_values( $this->full_teachidcheck);
-        }
+            $this->full_teachidcheck = $this->full_teachid  ;}
 
         // readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck.'&group='.$this->groupscheck.'&date=29.03.2022
 
@@ -62,7 +60,7 @@ class Teacher extends Component
 
     public function updated()
     {
-
+        $this->teachid = []; // очистка массива перед выводом новой инфы
         $import = new ImportDataClient();
         $response_subdep = $import->client->request('GET', 'readTeacher.php?dep='.$this->departcheck);
         $data2 = json_decode($response_subdep->getBody(),true);
