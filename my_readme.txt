@@ -173,7 +173,7 @@ php artisan make:livewire Teacher
 
 далее добавить Расписание занятий в аудиториях
 
-php artisan make:livewire Room
+php artisan make:livewire room
 
 
 
