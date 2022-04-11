@@ -5,19 +5,28 @@
     @php
         use App\Components\ImportDataClient;
         $import = new ImportDataClient();
-$response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=12002101&date=29.03.2022&period=180');
-$data = json_decode($response->getBody());
+//$response = $import->client->request('GET', 'readTeacher.php?dep=11200');
+//$data = json_decode($response->getBody(),true);
 
-        //for ($i = 0; $i < count($data->schedule); $i++) {
+                $response = $import->client->request('GET', 'readTeacher.php?dep=11200&subdep=1631&teachid=4&date=07.04.2022&period=180');
+        $full_teachid = json_decode($response->getBody(),true);
+
+$full_teachid = array_values( $full_teachid);
+
+   //     if(isset($this->full_teachid['0'])){
+    //        $check = $this->full_teachid['0'];}else{
+     //       $this->full_teachid = $full_teachid  ;
+   //     }
+
+      //  for ($i = 0; $i < count($data->schedule); $i++) {
       //      $this->full_schedule[] = (array)$data->schedule[$i];
       //  }
 
       //  echo ($this->full_schedule[0]['weekday']);
 
-
 echo '<pre>';
 
-//print_r($data);
+//print_r($full_teachid);
 echo '</pre>';
 //print_r($data2);
 
@@ -58,18 +67,18 @@ print_r($data);
         <div class="card-header">
             <nav role='navigation' class="transformer-tabs">
                 <ul class="nav nav-tabs" id="myTab" style="margin-bottom: 20px;">
+                    <li class="nav-item ">
+                        <a class="nav-link " href="\" data-toggle="tab">Расписание занятий студентов</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link " href="Teacher" data-toggle="tab">Расписание преподавателей</a>
+                    </li>
                     <li class="nav-item active">
-                        <a class="nav-link active" href="/" data-toggle="tab">Расписание занятий студентов</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Teacher" data-toggle="tab">Расписание преподавателей</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="room" data-toggle="tab">Расписание занятий в аудиториях</a>
+                        <a class="nav-link active" href="room" data-toggle="tab">Расписание занятий в аудиториях</a>
                     </li>
                 </ul>
            </nav>
-            @livewire('schedule')
+            @livewire('room')
         </div>
     </div>
 

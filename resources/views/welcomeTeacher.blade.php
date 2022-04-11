@@ -74,7 +74,7 @@ print_r($data);
                         <a class="nav-link active" href="Teacher" data-toggle="tab">Расписание преподавателей</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#messages" data-toggle="tab">Расписание занятий в аудиториях</a>
+                        <a class="nav-link" href="room" data-toggle="tab">Расписание занятий в аудиториях</a>
                     </li>
                 </ul>
            </nav>

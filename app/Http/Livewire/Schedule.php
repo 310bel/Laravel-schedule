@@ -36,11 +36,13 @@ class Schedule extends Component
 
     public function updatedGroupscheck()
     {
+        $this->form = []; // очистка массива перед выводом новой инфы
         $import = new ImportDataClient();
-        $response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=12001803&date=04.04.2022&period=5');
+        $response = $import->client->request('GET', 'readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck.'&group='.$this->groupscheck.'&date=11.04.2022&period=5');
         $data = json_decode($response->getBody());
 
         // readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck.'&group='.$this->groupscheck.'&date=29.03.2022
+        // readStudent.php?os=android&dep=11200&form=2&group=12001803&date=04.04.2022&period=5
 
         $this->testhuk = 'функция сработала';
 
@@ -50,7 +52,7 @@ class Schedule extends Component
 //                $this->date[$i] = $item[$i]->date;
 //            }
 //        }
-        $this->full_schedule = []; // очистка массива перед выводом новой инфы
+
         for ($i = 0; $i < count($data->schedule); $i++) {
             $this->full_schedule[] = (array)$data->schedule[$i];
         }
@@ -58,7 +60,9 @@ class Schedule extends Component
 
     public function updated()
     {
-
+        $this->full_schedule = []; // очистка массива перед выводом новой инфы
+        $this->group = []; // очистка массива перед выводом новой инфы
+        $this->form = []; // очистка массива перед выводом новой инфы
         $import = new ImportDataClient();
         $response_groups = $import->client->request('GET', 'readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck);
         $data2 = json_decode($response_groups->getBody());

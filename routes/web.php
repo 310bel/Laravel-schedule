@@ -19,3 +19,7 @@ Route::get('/', function () {
 
 Route::resource('Teacher','ScheduleController')->names('Teacher');
 
+Route::get('room', function () {
+    return view('welcomeRoom');
+});
+

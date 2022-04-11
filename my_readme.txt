@@ -175,7 +175,18 @@ php artisan make:livewire Teacher
 
 php artisan make:livewire room
 
+https://dekanat.bsu.edu.ru/blocks/bsu_api/bsu_schedule/readRoom.php?area=11200&build=1631&room=12002101&date=11.04.2022&period=180
 
+https://dekanat.bsu.edu.ru/blocks/bsu_api/bsu_schedule/readRoom.php?room=9239&date=11.04.2022&period=180
+
+SELECT * FROM dean.mdl_bsu_area_room;
+SELECT * FROM dean.mdl_bsu_area_building;
+SELECT * FROM dean.mdl_bsu_area;
+
+https://dekanat.bsu.edu.ru/blocks/bsu_api/bsu_schedule/readStudent.php?os=android&dep=11200&form=2&group=12001890&date=11.04.2022&period=180
+readStudent.php?os=android&dep=11200&form=2&group=12001803&date=04.04.2022
+
+12001890 - нет занятий. на этой группе выкидывает ошибку. надо это решть
 
 
 
