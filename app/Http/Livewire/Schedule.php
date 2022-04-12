@@ -19,7 +19,9 @@ class Schedule extends Component
     public $data;
     public $testhuk = 'не выбрано';
     public $full_schedule = [];
+    public $full_schedulecheck = [];
     public $groupsearch;
+    public $check;
 
     public function boot()
     {
@@ -38,20 +40,13 @@ class Schedule extends Component
     {
         $this->form = []; // очистка массива перед выводом новой инфы
         $import = new ImportDataClient();
-        $response = $import->client->request('GET', 'readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck.'&group='.$this->groupscheck.'&date=11.04.2022&period=5');
+        $response = $import->client->request('GET', 'readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck.'&group='.$this->groupscheck.'&date=12.04.2022&period=180');
         $data = json_decode($response->getBody());
 
         // readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck.'&group='.$this->groupscheck.'&date=29.03.2022
         // readStudent.php?os=android&dep=11200&form=2&group=12001803&date=04.04.2022&period=5
 
         $this->testhuk = 'функция сработала';
-
-//        foreach ($data as $key => $item) {
-//            for ($i = 0; $i < count($item); $i++) {
-//                $this->teacher2[$i] = $item[$i]->teacher;
-//                $this->date[$i] = $item[$i]->date;
-//            }
-//        }
 
         for ($i = 0; $i < count($data->schedule); $i++) {
             $this->full_schedule[] = (array)$data->schedule[$i];
@@ -88,14 +83,25 @@ class Schedule extends Component
     {
         $this->testhuk = $this->groupsearch;
         $import = new ImportDataClient();
-        $response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=' . $this->groupsearch . '&date=04.04.2022&period=5');
+        $response = $import->client->request('GET', 'readStudent.php?os=android&group=' . $this->groupsearch . '&date=04.04.2022&period=5');
         $data = json_decode($response->getBody());
 
-        $this->full_schedule = []; // очистка массива перед выводом новой инфы
+
+//        for ($i = 0; $i < count($data->schedule); $i++) {
+//            $this->full_schedule[] = (array)$data->schedule[$i];
+//        }
+
         for ($i = 0; $i < count($data->schedule); $i++) {
             $this->full_schedule[] = (array)$data->schedule[$i];
         }
+
+        $this->full_schedule = array_values( $this->full_schedule);
+
+        if($this->full_schedule['0'] === 'Нет занятий'){
+                $this->check = $this->full_schedule['0'];}else{
+                $this->full_schedulecheck = $this->full_schedule  ;}
     }
+
 
 
     public function render()

@@ -5,19 +5,30 @@
     @php
         use App\Components\ImportDataClient;
         $import = new ImportDataClient();
-$response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=12002101&date=29.03.2022&period=180');
+$response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=12002101&date=12.04.2022&period=180');
 $data = json_decode($response->getBody());
 
-        //for ($i = 0; $i < count($data->schedule); $i++) {
-      //      $this->full_schedule[] = (array)$data->schedule[$i];
-      //  }
+        for ($i = 0; $i < count($data->schedule); $i++) {
+            $this->full_schedule[] = (array)$data->schedule[$i];
+        }
 
-      //  echo ($this->full_schedule[0]['weekday']);
+    $response2 = $import->client->request('GET', 'readStudent.php?os=android&group=12001890&date=12.04.2022&period=5');
+$data2 = json_decode($response2->getBody());
+
+$this->full_teachid = array_values( $this->full_teachid);
+
+     //   for ($i = 0; $i < count($data2->schedule); $i++) {
+    //        $this->full_schedule2[] = (array)$data2->schedule[$i];
+    //    }
+
 
 
 echo '<pre>';
 
 //print_r($data);
+print_r($data2);
+//print_r($this->full_schedule);
+//print_r($this->full_schedule2);
 echo '</pre>';
 //print_r($data2);
 
