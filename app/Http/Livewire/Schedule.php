@@ -8,6 +8,7 @@ use Livewire\Component;
 class Schedule extends Component
 {
     public $departcheck ;
+    public $date_today ;
     public $departmentname = [];
     public $groupscheck;
     public $formcheck;
@@ -38,19 +39,20 @@ class Schedule extends Component
 
     public function updatedGroupscheck()
     {
+        $this->date_today = date('d.m.Y', time());
+        $this->check = '';
         $this->form = []; // очистка массива перед выводом новой инфы
         $import = new ImportDataClient();
-        $response = $import->client->request('GET', 'readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck.'&group='.$this->groupscheck.'&date=12.04.2022&period=180');
+        $response = $import->client->request('GET', 'readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck.'&group='.$this->groupscheck.'&date='.$this->date_today);
         $data = json_decode($response->getBody());
 
         // readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck.'&group='.$this->groupscheck.'&date=29.03.2022
         // readStudent.php?os=android&dep=11200&form=2&group=12001803&date=04.04.2022&period=5
 
-        $this->testhuk = 'функция сработала';
-
-        for ($i = 0; $i < count($data->schedule); $i++) {
-            $this->full_schedule[] = (array)$data->schedule[$i];
-        }
+        if (isset($data->schedule)) {
+            for ($i = 0; $i < count($data->schedule); $i++) {
+                $this->full_schedule[] = (array)$data->schedule[$i];}}
+        else {$this->check = 'нет занятий';}
     }
 
     public function updated()
@@ -81,25 +83,17 @@ class Schedule extends Component
 
     public function groupsearchclick()
     {
+        $this->check = '';
         $this->testhuk = $this->groupsearch;
         $import = new ImportDataClient();
         $response = $import->client->request('GET', 'readStudent.php?os=android&group=' . $this->groupsearch . '&date=04.04.2022&period=5');
         $data = json_decode($response->getBody());
 
+        if (isset($data->schedule)) {
+            for ($i = 0; $i < count($data->schedule); $i++) {
+                $this->full_schedule[] = (array)$data->schedule[$i];}}
+        else {$this->check = 'нет занятий';}
 
-//        for ($i = 0; $i < count($data->schedule); $i++) {
-//            $this->full_schedule[] = (array)$data->schedule[$i];
-//        }
-
-        for ($i = 0; $i < count($data->schedule); $i++) {
-            $this->full_schedule[] = (array)$data->schedule[$i];
-        }
-
-        $this->full_schedule = array_values( $this->full_schedule);
-
-        if($this->full_schedule['0'] === 'Нет занятий'){
-                $this->check = $this->full_schedule['0'];}else{
-                $this->full_schedulecheck = $this->full_schedule  ;}
     }
 
 

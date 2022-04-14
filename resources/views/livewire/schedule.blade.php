@@ -63,30 +63,30 @@
 Факультет>{{$departcheck}}< Тип переменной {{gettype($departcheck)}}
 </pre>
     <table class="table table-bordered table-striped">
-        @for($i = 0; $i < count($full_schedulecheck); $i++)
+        @for($i = 0; $i < count($full_schedule); $i++)
             <tr>
-                <td>{{ $full_schedulecheck[$i]['date'] }} {{ $full_schedulecheck[$i]['weekday'] }}
-                    @if ($full_schedulecheck[$i]['online'] === '1')занятия онлайн
-                    @elseif ($full_schedulecheck[$i]['online'] === '0')
-                        ауд.{{ $full_schedulecheck[$i]['room'] }} {{ $full_schedulecheck[$i]['area'] }}@endif
-                <td>{{ $full_schedulecheck[$i]['pairnumber'] }} пара
-                <td>{{ $full_schedulecheck[$i]['timestart'] }}-{{ $full_schedulecheck[$i]['timeend'] }}
-                <td>{{ $full_schedulecheck[$i]['edworkkind'] }}
-                <td>@if ($full_schedulecheck[$i]['subgroup'] === '1'){{ $full_schedulecheck[$i]['subgroup'] }}
-                    подгруппа @endif @if ( $full_schedulecheck[$i]['subgroup'] === '2'){{ $full_schedulecheck[$i]['subgroup'] }}
-                    подгруппа @endif{{ $full_schedulecheck[$i]['dis'] }}
-                <td>{{ $full_schedulecheck[$i]['pos'] }}
-                <td>{{ $full_schedulecheck[$i]['teacher'] }}
+                <td>{{ $full_schedule[$i]['date'] }} {{ $full_schedule[$i]['weekday'] }}
+                    @if ($full_schedule[$i]['online'] === '1')занятия онлайн
+                    @elseif ($full_schedule[$i]['online'] === '0')
+                        ауд.{{ $full_schedule[$i]['room'] }} {{ $full_schedule[$i]['area'] }}@endif
+                <td>{{ $full_schedule[$i]['pairnumber'] }} пара
+                <td>{{ $full_schedule[$i]['timestart'] }}-{{ $full_schedule[$i]['timeend'] }}
+                <td>{{ $full_schedule[$i]['edworkkind'] }}
+                <td>@if ($full_schedule[$i]['subgroup'] === '1'){{ $full_schedule[$i]['subgroup'] }}
+                    подгруппа @endif @if ( $full_schedule[$i]['subgroup'] === '2'){{ $full_schedule[$i]['subgroup'] }}
+                    подгруппа @endif{{ $full_schedule[$i]['dis'] }}
+                <td>{{ $full_schedule[$i]['pos'] }}
+                <td>{{ $full_schedule[$i]['teacher'] }}
         @endfor
         <tr>
     </table>
 </div>
 <?php
-    //echo ($this->full_schedulecheck[0]['weekday']);
-      // print_r($full_schedulecheck);
+    //echo ($this->full_schedule[0]['weekday']);
+      // print_r($full_schedule);
         ?>
 
-{{--        @foreach($full_schedulecheck as  $sfull)--}}
+{{--        @foreach($full_schedule as  $sfull)--}}
 {{--            @foreach($sfull as  $full)--}}
 {{--                <tr>--}}
 {{--                <td>преподаватель {{$full['teacher']}}</td>--}}

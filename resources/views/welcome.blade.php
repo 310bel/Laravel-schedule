@@ -13,9 +13,9 @@ $data = json_decode($response->getBody());
         }
 
     $response2 = $import->client->request('GET', 'readStudent.php?os=android&group=12001890&date=12.04.2022&period=5');
-$data2 = json_decode($response2->getBody());
+$data2 = json_decode($response2->getBody(),true);
 
-$this->full_teachid = array_values( $this->full_teachid);
+//$data2 = array_values( $data2);
 
      //   for ($i = 0; $i < count($data2->schedule); $i++) {
     //        $this->full_schedule2[] = (array)$data2->schedule[$i];
@@ -25,8 +25,10 @@ $this->full_teachid = array_values( $this->full_teachid);
 
 echo '<pre>';
 
+echo $date = date('d.m.Y', time());
+
 //print_r($data);
-print_r($data2);
+//print_r($data2);
 //print_r($this->full_schedule);
 //print_r($this->full_schedule2);
 echo '</pre>';

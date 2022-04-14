@@ -186,9 +186,9 @@ SELECT * FROM dean.mdl_bsu_area;
 https://dekanat.bsu.edu.ru/blocks/bsu_api/bsu_schedule/readStudent.php?os=android&dep=11200&form=2&group=12001890&date=11.04.2022&period=180
 readStudent.php?os=android&dep=11200&form=2&group=12001803&date=04.04.2022
 
-12001890 - нет занятий. на этой группе выкидывает ошибку. надо это решть
+12001890 - нет занятий. на этой группе выкидывает ошибку. надо это решть - добавил фильтр
 
-поиск по группе -таже проблема
+поиск по группе -таже проблема - решил добавил фильтр
 
 
 
