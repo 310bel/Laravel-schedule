@@ -37,11 +37,12 @@ class Teacher extends Component
 
     public function updatedTeachidcheck()
     {
+        $this->date_today = date('d.m.Y', time());
         $this->check = ''; // очистка cообщения Нет занятий
         $this->full_teachidcheck = []; // очистка массива перед выводом новой инфы
         $this->full_teachid = []; // очистка массива перед выводом новой инфы
         $import = new ImportDataClient();
-        $response = $import->client->request('GET', 'readTeacher.php?dep='.$this->departcheck.'&subdep='.$this->subdepcheck.'&teachid='.$this->teachidcheck.'&date=07.04.2022&period=180');
+        $response = $import->client->request('GET', 'readTeacher.php?dep='.$this->departcheck.'&subdep='.$this->subdepcheck.'&teachid='.$this->teachidcheck.'&date='.$this->date_today);
         $this->full_teachid = json_decode($response->getBody(),true);
 
        // $validatedData = $this->validate();
