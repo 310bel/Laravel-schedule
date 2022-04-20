@@ -17,9 +17,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('Teacher','ScheduleController')->names('Teacher');
+Route::resource('/Teacher','ScheduleController')->names('Teacher');
 
-Route::get('room', function () {
+Route::get('/room', function () {
     return view('welcomeRoom');
 });
+
+Route::get('test', function () {
+    return view('testTemplate');
+});
+
+Route::get('/greeting', function () {
+    return 'Hello World';
+});
+
+
 

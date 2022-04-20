@@ -57,10 +57,6 @@
 
     <pre>
         {{ $check }}
-        {{$testhuk}}
-Группа>{{$groupscheck}}< Тип переменной {{gettype($groupscheck)}}
-Форма обуч>{{$formcheck}}<
-Факультет>{{$departcheck}}< Тип переменной {{gettype($departcheck)}}
 </pre>
     <table class="table table-bordered table-striped">
         @for($i = 0; $i < count($full_schedule); $i++)
@@ -94,3 +90,8 @@
 {{--                </tr>--}}
 {{--        @endforeach--}}
 {{--        @endforeach--}}
+
+{{--        {{$testhuk}}--}}
+{{--Группа>{{$groupscheck}}< Тип переменной {{gettype($groupscheck)}}--}}
+{{--Форма обуч>{{$formcheck}}<--}}
+{{--Факультет>{{$departcheck}}< Тип переменной {{gettype($departcheck)}}--}}

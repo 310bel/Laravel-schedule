@@ -124,6 +124,7 @@ $date = optional_param('date', null, PARAM_TEXT);
 php composer.phar require livewire/livewire
 
 php artisan config:cache
+php /opt/vhosts/schedule/artisan config:cache
 
 Создал новый livewire компонент.
 php artisan make:livewire Schedule
@@ -190,6 +191,15 @@ readStudent.php?os=android&dep=11200&form=2&group=12001803&date=04.04.2022
 
 поиск по группе -таже проблема - решил добавил фильтр
 
+-- права на проект, делается в начале развертывания проекта в новой папке
 
+--для записи пользователя
+chown -R ilchenko /opt/vhosts/schedule/
+
+--для записи laravel frameworka в проект
+chown -R www-data:www-data /opt/vhosts/schedule/storage/
+
+--для записи nginx в проект
+chown -R www-data:www-data /opt/vhosts/schedule/logs/
 
 

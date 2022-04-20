@@ -25,7 +25,7 @@ $data2 = json_decode($response2->getBody(),true);
 
 echo '<pre>';
 
-echo $date = date('d.m.Y', time());
+//echo $date = date('d.m.Y', time());
 
 //print_r($data);
 //print_r($data2);
