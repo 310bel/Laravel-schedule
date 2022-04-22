@@ -44,19 +44,18 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-2">
+            <div class="col">
                 <input wire:model="groupsearch" class="form-control form-control-sm" type="text"
                        placeholder="Введите № группы" aria-label=".form-control-sm example "
-                       style="margin-bottom: 5px;width: 200px">
+                       style="margin-bottom: 5px">
             </div>
             <div class="col">
                 <button wire:click="groupsearchclick" class="btn btn-outline-secondary btn-sm">Поиск</button>
             </div>
         </div>
     </div>
-
     <pre>
-        {{ $check }}
+     <center><h3>{{ $check }}</h3></center>
 </pre>
     <table class="table table-bordered table-striped">
         @for($i = 0; $i < count($full_schedule); $i++)

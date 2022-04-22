@@ -33,9 +33,7 @@
         </select>
     </div>
 
-    <pre>
-        {{ $check }}
-</pre>
+<center><h4>{{ $check }}</h4></center>
 
     <table class="table table-bordered table-striped">
         @for($i = 0; $i < count($full_teachidcheck); $i++)

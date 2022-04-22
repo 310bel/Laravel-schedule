@@ -3,17 +3,17 @@
 @section('content')
 
     @php
-        use App\Components\ImportDataClient;
-        $import = new ImportDataClient();
-$response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=12002101&date=12.04.2022&period=180');
-$data = json_decode($response->getBody());
+//        use App\Components\ImportDataClient;
+//        $import = new ImportDataClient();
+//$response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=12002101&date=12.04.2022&period=180');
+//$data = json_decode($response->getBody());
 
-        for ($i = 0; $i < count($data->schedule); $i++) {
-            $this->full_schedule[] = (array)$data->schedule[$i];
-        }
+//        for ($i = 0; $i < count($data->schedule); $i++) {
+//            $this->full_schedule[] = (array)$data->schedule[$i];
+//        }
 
-    $response2 = $import->client->request('GET', 'readStudent.php?os=android&group=12001890&date=12.04.2022&period=5');
-$data2 = json_decode($response2->getBody(),true);
+//    $response2 = $import->client->request('GET', 'readStudent.php?os=android&group=12001890&date=12.04.2022&period=5');
+//$data2 = json_decode($response2->getBody(),true);
 
 //$data2 = array_values( $data2);
 
@@ -23,7 +23,7 @@ $data2 = json_decode($response2->getBody(),true);
 
 
 
-echo '<pre>';
+//echo '<pre>';
 
 //echo $date = date('d.m.Y', time());
 
@@ -31,7 +31,7 @@ echo '<pre>';
 //print_r($data2);
 //print_r($this->full_schedule);
 //print_r($this->full_schedule2);
-echo '</pre>';
+//echo '</pre>';
 //print_r($data2);
 
 //foreach ($data as $key=> $item){

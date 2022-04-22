@@ -31,5 +31,9 @@ Route::get('/greeting', function () {
     return 'Hello World';
 });
 
+Route::fallback(function () {
+    return 'Резервный маршрут';
+});
+
 
 
