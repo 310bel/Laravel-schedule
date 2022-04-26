@@ -60,18 +60,16 @@
     <table class="table table-bordered table-striped">
         @for($i = 0; $i < count($full_schedule); $i++)
             <tr>
-                <td>{{ $full_schedule[$i]['date'] }} {{ $full_schedule[$i]['weekday'] }}
-                    @if ($full_schedule[$i]['online'] === '1')занятия онлайн
+                <td>{{ $full_schedule[$i]['date'] }} {{ $full_schedule[$i]['weekday']}}
+                    @if($full_schedule[$i]['online'] === '1'), занятия онлайн
                     @elseif ($full_schedule[$i]['online'] === '0')
                         ауд.{{ $full_schedule[$i]['room'] }} {{ $full_schedule[$i]['area'] }}@endif
                 <td>{{ $full_schedule[$i]['pairnumber'] }} пара
                 <td>{{ $full_schedule[$i]['timestart'] }}-{{ $full_schedule[$i]['timeend'] }}
                 <td>{{ $full_schedule[$i]['edworkkind'] }}
-                <td>@if ($full_schedule[$i]['subgroup'] === '1'){{ $full_schedule[$i]['subgroup'] }}
-                    подгруппа @endif @if ( $full_schedule[$i]['subgroup'] === '2'){{ $full_schedule[$i]['subgroup'] }}
-                    подгруппа @endif{{ $full_schedule[$i]['dis'] }}
-                <td>{{ $full_schedule[$i]['pos'] }}
-                <td>{{ $full_schedule[$i]['teacher'] }}
+                @if ($full_schedule[$i]['subgroup'] === 'null') @elseif ($full_schedule[$i]['subgroup'])({{$full_schedule[$i]['subgroup']}})@endif
+                {{ $full_schedule[$i]['dis'] }}
+                <td>@if ($full_schedule[$i]['pos'] === 'null') @elseif ($full_schedule[$i]['pos']){{$full_schedule[$i]['pos']}}@endif {{ $full_schedule[$i]['teacher'] }}
         @endfor
         <tr>
     </table>
