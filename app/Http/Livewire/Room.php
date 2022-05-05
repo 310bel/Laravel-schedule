@@ -7,13 +7,13 @@ use Livewire\Component;
 
 class Room extends Component
 {
-    public $departcheck ;
+    public $komplexcheck ;
     public $departmentname = [];
     public $corpus = [];
+    public $komplex = [];
     public $subdepcheck;
     public $teachidcheck;
     public $teachid = [];
-    public $subdep = [];
     public $check;
     public $testhuk = '';
     public $groupsearch;
@@ -23,23 +23,22 @@ class Room extends Component
     public function boot()
     {
         $import = new ImportDataClient();
-        $response_departmentname = $import->client->request('GET', '');
-        $data0 = json_decode($response_departmentname->getBody());
+        $response_departmentname = $import->client->request('GET', 'readRoom.php?date=05.05.2022');
+        $data = json_decode($response_departmentname->getBody(),true);
 
-        foreach ($data0 as $key => $item) {
-            for ($i = 0; $i < count($item); $i++) {
-                $this->departmentname[$item[$i]->id] = $item[$i]->departmentname;
-            }
+        $this->data = array_values($data);
+        foreach ($this->data as $key => $item) {
+            $this->komplex[$item['id']] = $item['name'];
         }
     }
 
-    public function updatedTeachidcheck()
+    public function updatedRoomcheck()
     {
         $this->check = ''; // очистка cообщения Нет занятий
         $this->full_teachidcheck = []; // очистка массива перед выводом новой инфы
         $this->full_teachid = []; // очистка массива перед выводом новой инфы
         $import = new ImportDataClient();
-        $response = $import->client->request('GET', 'readTeacher.php?dep=' . $this->departcheck . '&subdep=' . $this->subdepcheck . '&teachid=' . $this->teachidcheck . '&date=07.04.2022&period=180');
+        $response = $import->client->request('GET', 'readRoom.php?area=' . $this->komplexcheck);
         $this->full_teachid = json_decode($response->getBody(), true);
 
         $this->full_teachid = array_values($this->full_teachid);
@@ -57,21 +56,21 @@ class Room extends Component
     {
         $this->teachid = []; // очистка массива перед выводом новой инфы
         $import = new ImportDataClient();
-        $response_subdep = $import->client->request('GET', 'readTeacher.php?dep='.$this->departcheck);
+        $response_subdep = $import->client->request('GET', 'readRoom.php?area=' . $this->komplexcheck);
         $data2 = json_decode($response_subdep->getBody(),true);
-        $response_teacher = $import->client->request('GET', 'readTeacher.php?dep='.$this->departcheck.'&subdep='.$this->subdepcheck);
+        $response_teacher = $import->client->request('GET', 'readRoom.php?area=' . $this->komplexcheck.'&build='. $this->corpuscheck.'&date=04.05.2022');
         $data3 = json_decode($response_teacher->getBody(),true);
 
 //var_dump($_POST);
         $this->data2 = array_values($data2);
         foreach ($this->data2 as $key => $item) {
-            $this->subdep[$item['id']] = $item['name'];
+            $this->corpus[$item['id']] = $item['name'];
         }
 
-        $this->data3 = array_values($data3);
-        foreach ($this->data3 as $key => $item) {
-            $this->teachid[$item['id']] = $item['fullname'];
-        }
+//        $this->data3 = array_values($data3);
+//        foreach ($this->data3 as $key => $item) {
+//            $this->teachid[$item['id']] = $item['fullname'];
+//        }
     }
 
     public function render()

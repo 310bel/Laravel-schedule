@@ -180,9 +180,22 @@ https://dekanat.bsu.edu.ru/blocks/bsu_api/bsu_schedule/readRoom.php?area=11200&b
 
 https://dekanat.bsu.edu.ru/blocks/bsu_api/bsu_schedule/readRoom.php?room=9239&date=11.04.2022&period=180
 
-SELECT * FROM dean.mdl_bsu_area_room;
-SELECT * FROM dean.mdl_bsu_area_building;
-SELECT * FROM dean.mdl_bsu_area;
+SELECT * FROM dean.mdl_bsu_area_room; - аудитория
+SELECT * FROM dean.mdl_bsu_area_building; - корпус
+SELECT * FROM dean.mdl_bsu_area; - адрес
+
+$area = optional_param('area', null, PARAM_INT); - адрес, нужен для выбора корпуса
+$build = optional_param('build', null, PARAM_INT); - корпус, указав его получаем список аудиторий
+$room = optional_param('room', null, PARAM_INT);
+
+https://dekanat.bsu.edu.ru/blocks/bsu_api/bsu_schedule/readRoom.php?date=05.05.2022
+получили список адресов(комплексов)
+
+https://dekanat.bsu.edu.ru/blocks/bsu_api/bsu_schedule/readRoom.php?area=42
+получили список корпусов(build) по адресу-комплексу (area=42 name "Учебный комплекс №2  по ул. Победы, 85")
+
+https://dekanat.bsu.edu.ru/blocks/bsu_api/bsu_schedule/readRoom.php?area=42&build=165&date=04.05.2022
+получили список аудиторий по (area=42 name	"Учебный комплекс №2  по ул. Победы, 85") и (build=165 name	"Учебный корпус №12")
 
 https://dekanat.bsu.edu.ru/blocks/bsu_api/bsu_schedule/readStudent.php?os=android&dep=11200&form=2&group=12001890&date=11.04.2022&period=180
 readStudent.php?os=android&dep=11200&form=2&group=12001803&date=04.04.2022
@@ -210,6 +223,12 @@ chown -R www-data:www-data /opt/vhosts/schedule/logs/
 разобраться с периодом вывода рассписания - доработать API
 Доработать API для расписания аудиторий
 Нужно разобраться как подтягивается ссылка на расписание в пегас
+
+SELECT edworkindid, edw.Name
+                                            FROM mdl_bsu_schedule s
+                                            JOIN mdl_bsu_ref_groups rg ON s.groupid = rg.id
+                                            INNER JOIN mdl_bsu_ref_edworkkind edw ON edw.id = s.edworkindid
+                                            WHERE edworkindid=13
 
 
 

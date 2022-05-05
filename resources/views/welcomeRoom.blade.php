@@ -8,10 +8,10 @@
 //$response = $import->client->request('GET', 'readTeacher.php?dep=11200');
 //$data = json_decode($response->getBody(),true);
 
-                $response = $import->client->request('GET', 'readTeacher.php?dep=11200&subdep=1631&teachid=4&date=07.04.2022&period=180');
-        $full_teachid = json_decode($response->getBody(),true);
+                $response = $import->client->request('GET', 'readRoom.php?date=05.05.2022');
+        $full_room = json_decode($response->getBody(),true);
 
-$full_teachid = array_values( $full_teachid);
+$full_room = array_values( $full_room);
 
    //     if(isset($this->full_teachid['0'])){
     //        $check = $this->full_teachid['0'];}else{
@@ -26,7 +26,7 @@ $full_teachid = array_values( $full_teachid);
 
 echo '<pre>';
 
-//print_r($full_teachid);
+//print_r($full_room);
 echo '</pre>';
 //print_r($data2);
 

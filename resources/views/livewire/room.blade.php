@@ -1,23 +1,41 @@
 <div>
     <div class="container">
-        <select wire:model="corpuscheck" class="form-select form-select-sm min-width"
+        <select wire:model="komplexcheck" class="form-select form-select-sm min-width"
                 aria-label=".form-select-sm example" style="margin-bottom: 5px;width: auto">
-            <option>Выберите корпус</option>
+            <option>Выберите комплекс</option>
 
-            @foreach ($corpus as $key=> $item)
-                <option value={{$key}}>{{$item}}</option>
+            @php
+                $i = ''
+            @endphp
+            @foreach ($komplex as $key=> $item)
+
+                <option {{$i}} value={{$key}}>{{$item}}</option>
             @endforeach
 
         </select>
 
-        <select wire:model="subdepcheck" class="form-select form-select-sm min-width"
+        <select wire:model="corpuscheck" class="form-select form-select-sm min-width"
+                aria-label=".form-select-sm example" style="margin-bottom: 5px;width: auto">
+            <option>Выберите корпус</option>
+
+            @php
+                $i = ''
+            @endphp
+            @foreach ($corpus as $key=> $item)
+
+                <option {{$i}} value={{$key}}>{{$item}}</option>
+            @endforeach
+
+        </select>
+
+        <select wire:model="roomcheck" class="form-select form-select-sm min-width"
                 aria-label=".form-select-sm example" style="margin-bottom: 5px;width: auto;">
 
             <option>Выберите аудиторию</option>
 
-            @foreach ($subdep as $key=> $item)
-                <option value={{$key}}>{{$item}}</option>
-            @endforeach
+{{--            @foreach ($subdep as $key=> $item)--}}
+{{--                <option value={{$key}}>{{$item}}</option>--}}
+{{--            @endforeach--}}
 
         </select>
 
