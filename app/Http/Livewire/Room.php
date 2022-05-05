@@ -15,6 +15,7 @@ class Room extends Component
     public $teachidcheck;
     public $teachid = [];
     public $check;
+    public $room;
     public $testhuk = '';
     public $groupsearch;
     public $full_teachid = [];
@@ -67,10 +68,10 @@ class Room extends Component
             $this->corpus[$item['id']] = $item['name'];
         }
 
-//        $this->data3 = array_values($data3);
-//        foreach ($this->data3 as $key => $item) {
-//            $this->teachid[$item['id']] = $item['fullname'];
-//        }
+        $this->data3 = array_values($data3);
+        foreach ($this->data3 as $key => $item) {
+            $this->room[$item['id']] = $item['name'];
+        }
     }
 
     public function render()
