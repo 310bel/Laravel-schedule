@@ -11,11 +11,11 @@ class Room extends Component
     public $departmentname = [];
     public $corpus = [];
     public $komplex = [];
-    public $subdepcheck;
-    public $teachidcheck;
+    public $corpuscheck;
+    public $roomcheck;
     public $teachid = [];
     public $check;
-    public $room;
+    public $room= [];
     public $testhuk = '';
     public $groupsearch;
     public $full_teachid = [];

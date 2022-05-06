@@ -33,9 +33,9 @@
 
             <option>Выберите аудиторию</option>
 
-{{--            @foreach ($subdep as $key=> $item)--}}
-{{--                <option value={{$key}}>{{$item}}</option>--}}
-{{--            @endforeach--}}
+            @foreach ($room as $key=> $item)
+                <option value={{$key}}>{{$item}}</option>
+            @endforeach
 
         </select>
 
