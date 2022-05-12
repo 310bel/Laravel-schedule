@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appschedule')
 
 @section('content')
 
@@ -68,7 +68,7 @@ print_r($data);
             <nav role='navigation' class="transformer-tabs">
                 <ul class="nav nav-tabs" id="myTab" style="margin-bottom: 20px;">
                     <li class="nav-item ">
-                        <a class="nav-link " href="\" data-toggle="tab">Расписание занятий студентов</a>
+                        <a class="nav-link " href="Student" data-toggle="tab">Расписание занятий студентов</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link " href="Teacher" data-toggle="tab">Расписание преподавателей</a>

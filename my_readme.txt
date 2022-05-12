@@ -16,9 +16,10 @@ php composer.phar create-project laravel/laravel
 для этого заменить шаблон главной страницы на свой
 
 Испльзуем пакет laravel guzzle. он парсит данные из API и преобразует их в обьект
+Видео - 39 Класс HTTP Guzzle в Laravel Интеграция со сторонними сервисами (Laravel Creative)
+
 С помощью селекторов мы создаем массив данных для отправки запроса.
 Получаем ответ и его(обьект) нужно разложить циклом и вывести на экран.
-
 сделал консольную команду:
 php artisan make:command importJsonplaceholderCommand
 
@@ -230,5 +231,8 @@ SELECT edworkindid, edw.Name
                                             INNER JOIN mdl_bsu_ref_edworkkind edw ON edw.id = s.edworkindid
                                             WHERE edworkindid=13
 
-
+проверка версии php
+php -v
+подключенные модули
+php -m
 
