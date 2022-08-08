@@ -24,7 +24,7 @@ class Schedule extends Component
     public $groupsearch;
     public $check;
 
-    public function boot()
+    public function boot() // Запускается при каждом запросе
     {
         $import = new ImportDataClient();
         $response_departmentname = $import->client->request('GET', '');
@@ -37,11 +37,11 @@ class Schedule extends Component
         }
     }
 
-    public function updatedGroupscheck()
+    public function updatedGroupscheck() // Запускается после обновления свойства с именем $Groupscheck (пишется с большой Буквы)
     {
         $this->date_today = date('d.m.Y', time());
         $this->check = '';
-        $this->form = []; // очистка массива перед выводом новой инфы
+//        $this->form = []; // очистка массива перед выводом новой инфы
         $import = new ImportDataClient();
         $response = $import->client->request('GET', 'readStudent.php?os=android&dep='.$this->departcheck.'&form='.$this->formcheck.'&group='.$this->groupscheck.'&date='.$this->date_today);
         $data = json_decode($response->getBody());
@@ -55,7 +55,7 @@ class Schedule extends Component
         else {$this->check = 'нет занятий';}
     }
 
-    public function updated()
+    public function updated() // Запускается после любого обновления данных компонента Livewire
     {
         $this->full_schedule = []; // очистка массива перед выводом новой инфы
         $this->group = []; // очистка массива перед выводом новой инфы
@@ -86,13 +86,17 @@ class Schedule extends Component
         $this->check = '';
         $this->testhuk = $this->groupsearch;
         $import = new ImportDataClient();
-        $response = $import->client->request('GET', 'readStudent.php?os=android&group=' . $this->groupsearch . '&date=04.04.2022&period=5');
+//        $response = $import->client->request('GET', 'readStudent.php?os=android&group=' . $this->groupsearch . '&date=04.04.2022&period=5');
+        $response = $import->client->request('GET', 'readStudent.php?os=android&dep=11200&form=2&group=12001801&date=25.03.2022&period=70');
         $data = json_decode($response->getBody());
 
         if (isset($data->schedule)) {
             for ($i = 0; $i < count($data->schedule); $i++) {
                 $this->full_schedule[] = (array)$data->schedule[$i];}}
         else {$this->check = 'нет занятий';}
+
+//        array_multisort($full_schedule->id);
+//        array_multisort( $this->full_schedule[0]->id);
 
     }
 

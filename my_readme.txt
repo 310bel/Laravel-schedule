@@ -237,3 +237,5 @@ php -v
 php -m
 
 composer update - через командную строку
+
+php artisan optimize

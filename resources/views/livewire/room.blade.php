@@ -64,8 +64,7 @@
             <tr>
                 <td>{{ $full_teachidcheck[$i]['date'] }} {{ $full_teachidcheck[$i]['weekday'] }}
                     @if ($full_teachidcheck[$i]['online'] === '1')занятия онлайн
-                    @elseif ($full_teachidcheck[$i]['online'] === '0')
-                        ауд.{{ $full_teachidcheck[$i]['room'] }} {{ $full_teachidcheck[$i]['area'] }}@endif
+                @elseif ($full_teachidcheck[$i]['online'] === '0')@endif
                 <td>{{ $full_teachidcheck[$i]['pairid'] }} пара
                 <td>{{ $full_teachidcheck[$i]['timestart'] }}-{{ $full_teachidcheck[$i]['timeend'] }}
                 <td>{{ $full_teachidcheck[$i]['edworkkind'] }}
@@ -73,11 +72,12 @@
                     подгруппа @endif @if ( $full_teachidcheck[$i]['subgroup'] === '2'){{ $full_teachidcheck[$i]['subgroup'] }}
                     подгруппа @endif{{ $full_teachidcheck[$i]['dis'] }}
                 <td>гр. {{ $full_teachidcheck[$i]['groups'] }}
+                <td>@if ($full_teachidcheck[$i]['pos'] === 'null') @elseif ($full_teachidcheck[$i]['pos']){{$full_teachidcheck[$i]['pos']}}@endif {{ $full_teachidcheck[$i]['teacher'] }}
         @endfor
         <tr>
     </table>
 </div>
 <?php
-// print_r($full_teachidcheck);
+// print_r($this->full_schedule);
 ?>
 

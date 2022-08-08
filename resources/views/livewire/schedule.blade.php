@@ -74,9 +74,10 @@
         <tr>
     </table>
 </div>
+
 <?php
-    //echo ($this->full_schedule[0]['weekday']);
-      // print_r($full_schedule);
+{{--    echo ($full_schedule[0]['weekday']);--}}
+{{--       {{$this->full_schedule}};--}}
         ?>
 
 {{--        @foreach($full_schedule as  $sfull)--}}

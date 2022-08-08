@@ -23,8 +23,9 @@ class Room extends Component
 
     public function boot()
     {
+        $this->date_today = date('d.m.Y', time());
         $import = new ImportDataClient();
-        $response_departmentname = $import->client->request('GET', 'readRoom.php?date=05.05.2022');
+        $response_departmentname = $import->client->request('GET', 'readRoom.php?date='.$this->date_today);
         $data = json_decode($response_departmentname->getBody(),true);
 
         $this->data = array_values($data);
@@ -35,32 +36,32 @@ class Room extends Component
 
     public function updatedRoomcheck()
     {
+        $this->date_today = date('d.m.Y', time());
         $this->check = ''; // очистка cообщения Нет занятий
         $this->full_teachidcheck = []; // очистка массива перед выводом новой инфы
         $this->full_teachid = []; // очистка массива перед выводом новой инфы
         $import = new ImportDataClient();
-        $response = $import->client->request('GET', 'readRoom.php?area=' . $this->komplexcheck);
+        $response = $import->client->request('GET', 'readRoom.php?area=' . $this->komplexcheck.'&build='. $this->corpuscheck.'&room='. $this->roomcheck.'&date='.$this->date_today);
         $this->full_teachid = json_decode($response->getBody(), true);
 
-        $this->full_teachid = array_values($this->full_teachid);
+        $this->full_teachid = array_values($this->full_teachid); // заново индексирует возвращаемый массив числовыми индексами
 
         if ($this->full_teachid['0'] === 'Нет занятий') {
-            $this->check = $this->full_teachid['0'];
+            $this->check = $this->full_teachid['0']; // то check = Нет занятий
         } else {
             $this->full_teachidcheck = $this->full_teachid;
         }
-
-        $this->testhuk = 'функция сработала';
     }
 
     public function updated()
     {
+        $this->date_today = date('d.m.Y', time());
         $this->teachid = []; // очистка массива перед выводом новой инфы
         $import = new ImportDataClient();
-        $response_subdep = $import->client->request('GET', 'readRoom.php?area=' . $this->komplexcheck);
-        $data2 = json_decode($response_subdep->getBody(),true);
-        $response_teacher = $import->client->request('GET', 'readRoom.php?area=' . $this->komplexcheck.'&build='. $this->corpuscheck.'&date=04.05.2022');
-        $data3 = json_decode($response_teacher->getBody(),true);
+        $response_komplexcheck = $import->client->request('GET', 'readRoom.php?area=' . $this->komplexcheck);
+        $data2 = json_decode($response_komplexcheck->getBody(),true);
+        $response_corpuscheck = $import->client->request('GET', 'readRoom.php?area=' . $this->komplexcheck.'&build='. $this->corpuscheck.'&date='.$this->date_today);
+        $data3 = json_decode($response_corpuscheck->getBody(),true);
 
 //var_dump($_POST);
         $this->data2 = array_values($data2);
