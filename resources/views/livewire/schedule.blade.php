@@ -54,6 +54,7 @@
             </div>
         </div>
     </div>
+
     <pre>
      <center><h3>{{ $check }}</h3></center>
 </pre>
@@ -73,6 +74,40 @@
         @endfor
         <tr>
     </table>
+
+    @if($check0 === '1')
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <button wire:click="groupsearchclick_7" class="btn btn-outline-secondary btn-sm">Пред. неделя</button>
+            </div>
+            <div class="col">
+                <button wire:click="groupsearchclick" class="btn btn-outline-secondary btn-sm">Текущая неделя</button>
+            </div>
+            <div class="col" >
+                <button wire:click="groupsearchclick7" class="btn btn-outline-secondary btn-sm">След. неделя</button>
+            </div>
+        </div>
+    </div>
+    @endif
+
+    @if($check0 === '2')
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <button wire:click="groupscheck_7" class="btn btn-outline-secondary btn-sm">Пред. неделя</button>
+                </div>
+                <div class="col">
+                    <button wire:click="updatedGroupscheck" class="btn btn-outline-secondary btn-sm">Текущая неделя</button>
+                </div>
+                <div class="col" >
+                    <button wire:click="groupscheck7" class="btn btn-outline-secondary btn-sm">След. неделя</button>
+                </div>
+            </div>
+        </div>
+    @endif
+
+
 </div>
 
 <?php
